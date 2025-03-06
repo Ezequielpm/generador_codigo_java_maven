@@ -1,0 +1,10 @@
+.main-pane {
+    -fx-background-color: #BFBFBF;
+    -fx-padding: 50;
+    -fx-spacing: 20;
+}
+
+.title-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
