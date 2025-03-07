@@ -7,11 +7,13 @@
  * Created: Mar 6, 2025
  */
 
+-- Cami2010/07
 CREATE DATABASE codegenerator;
 \c codegenerator
 
-CREATE TABLE database
+CREATE TABLE databases
 (
+    id INT SERIAL PRIMARY KEY,
     ip VARCHAR(25),
     port VARCHAR(10),
     database_name VARCHAR(40),
