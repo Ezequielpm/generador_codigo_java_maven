@@ -38,7 +38,7 @@ public class DBCodeGeneratorOperations extends CRUD {
 
     @Override
     public void create() {
-        
+    /*    
         try {
             objJavaPostgreSQL.getStatement().execute("INSERT INTO codegenerator(idcat, iddif, idjug, puntos, fecha, resultado) VALUES"
                     + "(" + objPartida.getIdCategoria() + "," + objPartida.getIdDificultad() + "," 
@@ -49,7 +49,7 @@ public class DBCodeGeneratorOperations extends CRUD {
         }
 
 
-        /*
+        
         try {
             objJavaPostgreSQL.getStatement().execute("INSERT INTO partida(idcat, iddif, idjug, puntos, fecha, resultado) VALUES"
                     + "(" + objPartida.getIdCategoria() + "," + objPartida.getIdDificultad() + "," 
