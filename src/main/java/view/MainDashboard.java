@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+import controller.MainDashboardController;
 import java.awt.Color;
 
 /**
@@ -14,8 +15,11 @@ public class MainDashboard extends javax.swing.JFrame {
     /**
      * Creates new form MainDashboard
      */
+    MainDashboardController objMainDashboardController;
     public MainDashboard() {
         initComponents();
+        this.objMainDashboardController = new MainDashboardController(this);
+        this.setLocationRelativeTo(this);
     }
 
     /**
@@ -29,13 +33,12 @@ public class MainDashboard extends javax.swing.JFrame {
 
         MainPanel = new javax.swing.JPanel();
         LeftPanel = new javax.swing.JPanel();
-        ConnectDBButton = new javax.swing.JButton();
+        connectDBButton = new javax.swing.JButton();
         MainDashboardPanel = new javax.swing.JPanel();
         ConnectionsPanel = new javax.swing.JPanel();
         RecentConnectionsPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(900, 700));
         setMinimumSize(new java.awt.Dimension(900, 700));
         setSize(new java.awt.Dimension(900, 700));
 
@@ -43,17 +46,16 @@ public class MainDashboard extends javax.swing.JFrame {
 
         LeftPanel.setBackground(new java.awt.Color(26, 26, 26));
 
-        ConnectDBButton.setIcon(new javax.swing.ImageIcon("/Users/mariormoreno/NetBeansProjects/generador_codigo_java_maven/src/resources/icons/ConnectDBBtn.png")); // NOI18N
-        ConnectDBButton.setContentAreaFilled(false);
-        ConnectDBButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ConnectDBButton.setMaximumSize(new java.awt.Dimension(180, 50));
-        ConnectDBButton.setMinimumSize(new java.awt.Dimension(180, 50));
-        ConnectDBButton.setPreferredSize(new java.awt.Dimension(180, 50));
-        ConnectDBButton.setPressedIcon(new javax.swing.ImageIcon("/Users/mariormoreno/NetBeansProjects/generador_codigo_java_maven/src/resources/icons/ConnectDBBtnPressed.png")); // NOI18N
-        ConnectDBButton.setSize(new java.awt.Dimension(150, 50));
-        ConnectDBButton.addActionListener(new java.awt.event.ActionListener() {
+        connectDBButton.setIcon(new javax.swing.ImageIcon("/Users/ezequielpena/NetBeansProjects/generador_codigo_java_maven/src/resources/icons/ConnectDBBtn.png")); // NOI18N
+        connectDBButton.setContentAreaFilled(false);
+        connectDBButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        connectDBButton.setMaximumSize(new java.awt.Dimension(180, 50));
+        connectDBButton.setMinimumSize(new java.awt.Dimension(180, 50));
+        connectDBButton.setPreferredSize(new java.awt.Dimension(180, 50));
+        connectDBButton.setSize(new java.awt.Dimension(150, 50));
+        connectDBButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConnectDBButtonActionPerformed(evt);
+                connectDBButtonActionPerformed(evt);
             }
         });
 
@@ -63,14 +65,14 @@ public class MainDashboard extends javax.swing.JFrame {
             LeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LeftPanelLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addComponent(ConnectDBButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(connectDBButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         LeftPanelLayout.setVerticalGroup(
             LeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LeftPanelLayout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(ConnectDBButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(connectDBButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(715, Short.MAX_VALUE))
         );
 
@@ -154,9 +156,9 @@ public class MainDashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ConnectDBButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnectDBButtonActionPerformed
+    private void connectDBButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectDBButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ConnectDBButtonActionPerformed
+    }//GEN-LAST:event_connectDBButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,11 +196,11 @@ public class MainDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ConnectDBButton;
-    private javax.swing.JPanel ConnectionsPanel;
+    public javax.swing.JPanel ConnectionsPanel;
     private javax.swing.JPanel LeftPanel;
     private javax.swing.JPanel MainDashboardPanel;
     private javax.swing.JPanel MainPanel;
-    private javax.swing.JPanel RecentConnectionsPanel;
+    public javax.swing.JPanel RecentConnectionsPanel;
+    public javax.swing.JButton connectDBButton;
     // End of variables declaration//GEN-END:variables
 }
