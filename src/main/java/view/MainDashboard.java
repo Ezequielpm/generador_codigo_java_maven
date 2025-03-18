@@ -35,7 +35,7 @@ public class MainDashboard extends javax.swing.JFrame {
         LeftPanel = new javax.swing.JPanel();
         connectDBButton = new javax.swing.JButton();
         MainDashboardPanel = new javax.swing.JPanel();
-        ConnectionsPanel = new javax.swing.JPanel();
+        ConnectionsPanelaux = new javax.swing.JPanel();
         RecentConnectionsPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,16 +78,16 @@ public class MainDashboard extends javax.swing.JFrame {
 
         MainDashboardPanel.setBackground(new java.awt.Color(31, 31, 31));
 
-        ConnectionsPanel.setBackground(new java.awt.Color(48, 47, 47));
+        ConnectionsPanelaux.setBackground(new java.awt.Color(48, 47, 47));
 
-        javax.swing.GroupLayout ConnectionsPanelLayout = new javax.swing.GroupLayout(ConnectionsPanel);
-        ConnectionsPanel.setLayout(ConnectionsPanelLayout);
-        ConnectionsPanelLayout.setHorizontalGroup(
-            ConnectionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        javax.swing.GroupLayout ConnectionsPanelauxLayout = new javax.swing.GroupLayout(ConnectionsPanelaux);
+        ConnectionsPanelaux.setLayout(ConnectionsPanelauxLayout);
+        ConnectionsPanelauxLayout.setHorizontalGroup(
+            ConnectionsPanelauxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 478, Short.MAX_VALUE)
         );
-        ConnectionsPanelLayout.setVerticalGroup(
-            ConnectionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        ConnectionsPanelauxLayout.setVerticalGroup(
+            ConnectionsPanelauxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 230, Short.MAX_VALUE)
         );
 
@@ -112,17 +112,17 @@ public class MainDashboard extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addGroup(MainDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(RecentConnectionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ConnectionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ConnectionsPanelaux, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(179, Short.MAX_VALUE))
         );
         MainDashboardPanelLayout.setVerticalGroup(
             MainDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MainDashboardPanelLayout.createSequentialGroup()
                 .addGap(103, 103, 103)
-                .addComponent(ConnectionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ConnectionsPanelaux, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(99, 99, 99)
                 .addComponent(RecentConnectionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
@@ -196,7 +196,7 @@ public class MainDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JPanel ConnectionsPanel;
+    public javax.swing.JPanel ConnectionsPanelaux;
     private javax.swing.JPanel LeftPanel;
     private javax.swing.JPanel MainDashboardPanel;
     private javax.swing.JPanel MainPanel;
