@@ -42,7 +42,7 @@ public class JavaPostgreSQL {
             // Connect to the database
             connection = DriverManager.getConnection(
                     "jdbc:postgresql://127.0.0.1/codegenerator",
-                    "postgres", "Cami2010/07");
+                    "postgres", "ezequielpm123");
             stmt = connection.createStatement();
 
             boolean valid = connection.isValid(50000);
