@@ -4,6 +4,8 @@
  */
 package view;
 
+import controller.DBViewListController;
+
 /**
  *
  * @author ezequielpena
@@ -13,8 +15,10 @@ public class DBViewList extends javax.swing.JPanel {
     /**
      * Creates new form DBViewList
      */
+    public DBViewListController objDBViewListController;
     public DBViewList() {
         initComponents();
+        this.objDBViewListController = new DBViewListController(this);
     }
     
     public DBViewList(String nameDB) {
@@ -37,11 +41,16 @@ public class DBViewList extends javax.swing.JPanel {
         nameDB = new javax.swing.JLabel();
         removeButton = new javax.swing.JButton();
         viewButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        jPanel1.setBackground(new java.awt.Color(31, 31, 31));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         editButton.setBackground(new java.awt.Color(51, 255, 255));
         editButton.setText("Edit");
 
         nameDB.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        nameDB.setForeground(new java.awt.Color(255, 255, 255));
         nameDB.setText("Name database");
 
         removeButton.setBackground(new java.awt.Color(255, 0, 102));
@@ -50,14 +59,18 @@ public class DBViewList extends javax.swing.JPanel {
         viewButton.setBackground(new java.awt.Color(153, 255, 51));
         viewButton.setText("View");
 
+        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/ezequielpena/NetBeansProjects/generador_codigo_java_maven/src/resources/icons/garbage.png")); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1)
+                .addGap(41, 41, 41)
                 .addComponent(nameDB)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addComponent(viewButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(editButton)
@@ -74,14 +87,18 @@ public class DBViewList extends javax.swing.JPanel {
                     .addComponent(nameDB)
                     .addComponent(removeButton)
                     .addComponent(viewButton))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,8 +109,9 @@ public class DBViewList extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton editButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel nameDB;
+    public javax.swing.JLabel nameDB;
     public javax.swing.JButton removeButton;
     public javax.swing.JButton viewButton;
     // End of variables declaration//GEN-END:variables
