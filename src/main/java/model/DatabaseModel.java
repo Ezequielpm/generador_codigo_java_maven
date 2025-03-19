@@ -9,18 +9,30 @@ package model;
  * @author mariormoreno
  */
 public class DatabaseModel {
+    int id;
     String ip, port, databaseName, user, password;
 
     public DatabaseModel() {
     }
 
-    public DatabaseModel(String ip, String port, String databaseName, String user, String password) {
+    public DatabaseModel(int id, String ip, String port, String databaseName, String user, String password) {
+        this.id = id;
         this.ip = ip;
         this.port = port;
         this.databaseName = databaseName;
         this.user = user;
         this.password = password;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
     
     
 
