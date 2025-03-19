@@ -20,6 +20,7 @@ public class MainDashboard extends javax.swing.JFrame {
         initComponents();
         this.objMainDashboardController = new MainDashboardController(this);
         this.setLocationRelativeTo(this);
+
     }
 
     /**
@@ -35,10 +36,14 @@ public class MainDashboard extends javax.swing.JFrame {
         LeftPanel = new javax.swing.JPanel();
         connectDBButton = new javax.swing.JButton();
         MainDashboardPanel = new javax.swing.JPanel();
-        ConnectionsPanelaux = new javax.swing.JPanel();
         RecentConnectionsPanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        panelContainer = new javax.swing.JScrollPane();
+        ConnectionsPanelaux = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(31, 31, 31));
         setMinimumSize(new java.awt.Dimension(900, 700));
         setSize(new java.awt.Dimension(900, 700));
 
@@ -64,45 +69,64 @@ public class MainDashboard extends javax.swing.JFrame {
         LeftPanelLayout.setHorizontalGroup(
             LeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LeftPanelLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(connectDBButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE)
+                .addComponent(connectDBButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         LeftPanelLayout.setVerticalGroup(
             LeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LeftPanelLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(connectDBButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(715, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE)
+                .addComponent(connectDBButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(735, Short.MAX_VALUE))
         );
 
         MainDashboardPanel.setBackground(new java.awt.Color(31, 31, 31));
 
-        ConnectionsPanelaux.setBackground(new java.awt.Color(48, 47, 47));
+        RecentConnectionsPanel.setBackground(new java.awt.Color(31, 31, 31));
+        RecentConnectionsPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        javax.swing.GroupLayout ConnectionsPanelauxLayout = new javax.swing.GroupLayout(ConnectionsPanelaux);
-        ConnectionsPanelaux.setLayout(ConnectionsPanelauxLayout);
-        ConnectionsPanelauxLayout.setHorizontalGroup(
-            ConnectionsPanelauxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 478, Short.MAX_VALUE)
-        );
-        ConnectionsPanelauxLayout.setVerticalGroup(
-            ConnectionsPanelauxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 230, Short.MAX_VALUE)
-        );
-
-        RecentConnectionsPanel.setBackground(new java.awt.Color(48, 47, 47));
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("There is no recent connections");
 
         javax.swing.GroupLayout RecentConnectionsPanelLayout = new javax.swing.GroupLayout(RecentConnectionsPanel);
         RecentConnectionsPanel.setLayout(RecentConnectionsPanelLayout);
         RecentConnectionsPanelLayout.setHorizontalGroup(
             RecentConnectionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 478, Short.MAX_VALUE)
+            .addGroup(RecentConnectionsPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         RecentConnectionsPanelLayout.setVerticalGroup(
             RecentConnectionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 230, Short.MAX_VALUE)
+            .addGroup(RecentConnectionsPanelLayout.createSequentialGroup()
+                .addContainerGap(59, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
+
+        panelContainer.setBorder(null);
+        panelContainer.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        panelContainer.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        javax.swing.GroupLayout ConnectionsPanelauxLayout = new javax.swing.GroupLayout(ConnectionsPanelaux);
+        ConnectionsPanelaux.setLayout(ConnectionsPanelauxLayout);
+        ConnectionsPanelauxLayout.setHorizontalGroup(
+            ConnectionsPanelauxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 476, Short.MAX_VALUE)
+        );
+        ConnectionsPanelauxLayout.setVerticalGroup(
+            ConnectionsPanelauxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 620, Short.MAX_VALUE)
+        );
+
+        panelContainer.setViewportView(ConnectionsPanelaux);
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("My databases");
 
         javax.swing.GroupLayout MainDashboardPanelLayout = new javax.swing.GroupLayout(MainDashboardPanel);
         MainDashboardPanel.setLayout(MainDashboardPanelLayout);
@@ -110,19 +134,23 @@ public class MainDashboard extends javax.swing.JFrame {
             MainDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MainDashboardPanelLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addGroup(MainDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(RecentConnectionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ConnectionsPanelaux, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addGroup(MainDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MainDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(panelContainer)
+                        .addComponent(RecentConnectionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
         MainDashboardPanelLayout.setVerticalGroup(
             MainDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MainDashboardPanelLayout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(ConnectionsPanelaux, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(99, 99, 99)
-                .addComponent(RecentConnectionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(RecentConnectionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
@@ -130,9 +158,9 @@ public class MainDashboard extends javax.swing.JFrame {
         MainPanelLayout.setHorizontalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
-                .addComponent(LeftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(MainDashboardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(LeftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(MainDashboardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         MainPanelLayout.setVerticalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,7 +177,7 @@ public class MainDashboard extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -202,5 +230,8 @@ public class MainDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel MainPanel;
     public javax.swing.JPanel RecentConnectionsPanel;
     public javax.swing.JButton connectDBButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    public javax.swing.JScrollPane panelContainer;
     // End of variables declaration//GEN-END:variables
 }
