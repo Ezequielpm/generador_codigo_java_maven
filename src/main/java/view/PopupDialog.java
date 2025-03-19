@@ -15,7 +15,7 @@ public class PopupDialog extends javax.swing.JDialog {
     /**
      * Creates new form PopupDialog
      */
-    PopupDialogController objPopupDialogController;
+    public PopupDialogController objPopupDialogController;
 
     public PopupDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
