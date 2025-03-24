@@ -15,7 +15,7 @@ public class MainDashboard extends javax.swing.JFrame {
     /**
      * Creates new form MainDashboard
      */
-    MainDashboardController objMainDashboardController;
+    public MainDashboardController objMainDashboardController;
     public MainDashboard() {
         initComponents();
         this.objMainDashboardController = new MainDashboardController(this);
