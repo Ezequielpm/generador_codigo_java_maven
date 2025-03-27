@@ -115,7 +115,7 @@ public class CodeGenerator {
         //filling the vars ones
         for (Column attribute : this.table.getAttributeList()) {
             isSerial = 0;
-            vars.append("\n\t");
+            //vars.append("\n\t");
             vars.append(attribute.getAccess());
             vars.append(" ");
 
@@ -153,7 +153,7 @@ public class CodeGenerator {
             gettersAndSetters.append("(){");
             gettersAndSetters.append("\n");
             gettersAndSetters.append("\t");
-            gettersAndSetters.append("return ");
+            gettersAndSetters.append("\treturn ");
             gettersAndSetters.append(attribute.getName());
             gettersAndSetters.append(";\n\t}");
             
@@ -165,7 +165,7 @@ public class CodeGenerator {
             gettersAndSetters.append(" ");
             gettersAndSetters.append(attribute.getName());
             gettersAndSetters.append("){\n\t");
-            gettersAndSetters.append("this.");
+            gettersAndSetters.append("\tthis.");
             gettersAndSetters.append(attribute.getName());
             gettersAndSetters.append(" = ");
             gettersAndSetters.append(attribute.getName());

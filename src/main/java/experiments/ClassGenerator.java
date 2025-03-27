@@ -13,6 +13,7 @@ import java.io.PrintWriter;
  * @author ezequielpena
  */
 public class ClassGenerator {
+    String generatedCode;
     public ClassGenerator() {
     }
     
@@ -27,9 +28,10 @@ public class ClassGenerator {
             file.getParentFile().mkdirs(); // Asegura que la carpeta exista
             fw = new FileWriter(file);
             pw = new PrintWriter(fw);
-            
+            System.out.println("EL CODIGO GENERADO:::");
+            System.out.println(generatedCode);
             // Contenido de prueba
-            pw.println("prueba");
+            pw.println(generatedCode);
             
             System.out.println("Archivo generado con éxito en: " + path);
         } catch (Exception e) {
@@ -47,4 +49,14 @@ public class ClassGenerator {
     public void getMetadataDB(){
         
     }
+
+    public String getGeneratedCode() {
+        return generatedCode;
+    }
+
+    public void setGeneratedCode(String generatedCode) {
+        this.generatedCode = generatedCode;
+    }
+    
+    
 }

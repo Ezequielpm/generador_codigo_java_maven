@@ -4,6 +4,7 @@
  */
 package controller;
 
+import dao.SaveFileCode;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.Table;
@@ -34,13 +35,13 @@ public class CodePreviewController implements ActionListener{
         }
         if(e.getSource()==this.objCodePreview.saveButtton){
             
-            
+            saveCode();
             return;
         }
         
     }
     
-    private void showGeneratedCode(){
+    public void showGeneratedCode(){
         this.objCodePreview.codeArea.setText(generatedCode);
     }
 
@@ -62,6 +63,8 @@ public class CodePreviewController implements ActionListener{
     
     
     public void saveCode(){
-        
+        SaveFileCode objSaveFileCode = new SaveFileCode(generatedCode);
+        objSaveFileCode.setFileName(this.objTable.getNameTable());
+        objSaveFileCode.storeCode();
     }
 }

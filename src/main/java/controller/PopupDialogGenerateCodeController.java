@@ -35,7 +35,9 @@ public class PopupDialogGenerateCodeController implements ActionListener {
             CodePreview objCodePreview = new CodePreview(null, true);
             objCodePreview.objCodePreviewController.setObjTable(objTable);
             generatedCode = generateCode();
-            objCodePreview.codeArea.setText(generatedCode);
+            //objCodePreview.codeArea.setText(generatedCode);
+            objCodePreview.objCodePreviewController.setGeneratedCode(generatedCode);
+            objCodePreview.objCodePreviewController.showGeneratedCode();
             
             
             this.objPopupDialogGenerateCode.dispose();
