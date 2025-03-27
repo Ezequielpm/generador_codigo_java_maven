@@ -22,6 +22,10 @@ public class MainDashboard extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
 
     }
+    
+    public void restartComponents(){
+        initComponents();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,6 +44,7 @@ public class MainDashboard extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         panelContainer = new javax.swing.JScrollPane();
         ConnectionsPanelaux = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -95,9 +100,9 @@ public class MainDashboard extends javax.swing.JFrame {
         RecentConnectionsPanelLayout.setHorizontalGroup(
             RecentConnectionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RecentConnectionsPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         RecentConnectionsPanelLayout.setVerticalGroup(
             RecentConnectionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,15 +116,27 @@ public class MainDashboard extends javax.swing.JFrame {
         panelContainer.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         panelContainer.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
+        ConnectionsPanelaux.setBackground(new java.awt.Color(31, 31, 31));
+
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel3.setText("Databases will show here");
+
         javax.swing.GroupLayout ConnectionsPanelauxLayout = new javax.swing.GroupLayout(ConnectionsPanelaux);
         ConnectionsPanelaux.setLayout(ConnectionsPanelauxLayout);
         ConnectionsPanelauxLayout.setHorizontalGroup(
             ConnectionsPanelauxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 476, Short.MAX_VALUE)
+            .addGroup(ConnectionsPanelauxLayout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(44, 44, 44))
         );
         ConnectionsPanelauxLayout.setVerticalGroup(
             ConnectionsPanelauxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 620, Short.MAX_VALUE)
+            .addGroup(ConnectionsPanelauxLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                .addGap(557, 557, 557))
         );
 
         panelContainer.setViewportView(ConnectionsPanelaux);
@@ -226,12 +243,13 @@ public class MainDashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel ConnectionsPanelaux;
     private javax.swing.JPanel LeftPanel;
-    private javax.swing.JPanel MainDashboardPanel;
+    public javax.swing.JPanel MainDashboardPanel;
     private javax.swing.JPanel MainPanel;
     public javax.swing.JPanel RecentConnectionsPanel;
     public javax.swing.JButton connectDBButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     public javax.swing.JScrollPane panelContainer;
     // End of variables declaration//GEN-END:variables
 }

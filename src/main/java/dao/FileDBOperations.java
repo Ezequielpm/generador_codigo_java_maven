@@ -35,6 +35,9 @@ public class FileDBOperations extends CRUD {
     //write
     FileWriter writer = null;
     PrintWriter pw = null;
+    
+    //update
+    ArrayList<DatabaseModel> updatedListDatabases;
 
     public FileDBOperations() {
         folder = new File("databases_user");
@@ -85,6 +88,14 @@ public class FileDBOperations extends CRUD {
         if (!folder.exists()) {
             folder.mkdirs();
         }*/
+        
+        
+        //before of insert the database, it is important check the number of lines in the current file
+        //in order to set the right id in the model
+        
+        ArrayList<DatabaseModel> listDatabases = this.read();
+        int numberLines = listDatabases.size();
+        this.objDatabaseModel.setId(numberLines+1);
         try {
             writer = new FileWriter(file, true);
             pw = new PrintWriter(writer);
@@ -168,7 +179,6 @@ public class FileDBOperations extends CRUD {
                     currentDatabaseModel.setDatabaseName(data[3]);
                     currentDatabaseModel.setUser(data[4]);
                     currentDatabaseModel.setPassword(data[5]);
-
                     currentLine = br.readLine();
                     databaseList.add(currentDatabaseModel);
                 }
@@ -184,7 +194,17 @@ public class FileDBOperations extends CRUD {
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            writer = new FileWriter(file);
+            writer.close();
+            String currentData;
+            for(DatabaseModel dbModel: updatedListDatabases){
+                this.objDatabaseModel = dbModel;
+                this.create();
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(FileDBOperations.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -192,6 +212,8 @@ public class FileDBOperations extends CRUD {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    
+    //create
     public DatabaseModel getObjDatabaseModel() {
         return objDatabaseModel;
     }
@@ -199,5 +221,19 @@ public class FileDBOperations extends CRUD {
     public void setObjDatabaseModel(DatabaseModel objDatabaseModel) {
         this.objDatabaseModel = objDatabaseModel;
     }
+    
+    
+    //update
+
+    public ArrayList<DatabaseModel> getUpdatedListDatabases() {
+        return updatedListDatabases;
+    }
+
+    public void setUpdatedListDatabases(ArrayList<DatabaseModel> updatedListDatabases) {
+        this.updatedListDatabases = updatedListDatabases;
+    }
+    
+    
+    
 
 }

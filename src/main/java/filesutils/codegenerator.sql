@@ -21,3 +21,24 @@ CREATE TABLE databases
     password_db VARCHAR(50)    
 );
 
+
+
+
+
+
+      Name       |  Owner   | Encoding | Locale Provider | Collate | Ctype | ICU Locale | ICU Rules |   Access privileges   
+-----------------+----------+----------+-----------------+---------+-------+------------+-----------+-----------------------
+ aseguradora     | postgres | UTF8     | libc            | C       | C     |            |           | 
+ bundesliga      | postgres | UTF8     | libc            | C       | C     |            |           | 
+ codegenerator   | postgres | UTF8     | libc            | C       | C     |            |           | 
+ control_escolar | postgres | UTF8     | libc            | C       | C     |            |           | 
+ convertidor     | postgres | UTF8     | libc            | C       | C     |            |           | 
+ java3g          | postgres | UTF8     | libc            | C       | C     |            |           | 
+ ligafutbol      | postgres | UTF8     | libc            | C       | C     |            |           | 
+ ligafutbol2     | postgres | UTF8     | libc            | C       | C     |            |           | 
+ loteria         | postgres | UTF8     | libc            | C       | C     |            |           | 
+ postgres        | postgres | UTF8     | libc            | C       | C     |            |           | 
+ queso           | postgres | UTF8     | libc            | C       | C     |            |           | 
+ queso2          | postgres | UTF8     | libc            | C       | C     |            |           | 
+ template0       | postgres | UTF8     | libc            | C       | C     |            |           | 
+

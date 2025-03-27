@@ -5,10 +5,12 @@
 package controller;
 
 import dao.FileDBOperations;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.DatabaseModel;
+import view.MainDashboard;
 import view.PopupDialog;
 
 /**
@@ -22,6 +24,7 @@ public class PopupDialogController implements ActionListener {
     FileDBOperations objFileDBOperations;
     DatabaseModel objDatabaseModel;
 
+    Frame parentContainer;
     public PopupDialogController() {
     }
 
@@ -44,6 +47,7 @@ public class PopupDialogController implements ActionListener {
             //validate the fields
 
             saveDatabase();
+            
             return;
         }
     }
@@ -70,6 +74,11 @@ public class PopupDialogController implements ActionListener {
         objFileDBOperations.create();
         showMessage();
         
+        
+        
+        MainDashboard objMainDashBoard = (MainDashboard)this.parentContainer;
+        objMainDashBoard.objMainDashboardController.showDatabaseConnections();
+        
         this.objPopupDialog.dispose();
         
 
@@ -94,6 +103,16 @@ public class PopupDialogController implements ActionListener {
     public void setObjDatabaseModel(DatabaseModel objDatabaseModel) {
         this.objDatabaseModel = objDatabaseModel;
     }
+
+    public Frame getParentContainer() {
+        return parentContainer;
+    }
+
+    public void setParentContainer(Frame parentContainer) {
+        this.parentContainer = parentContainer;
+    }
+    
+    
     
     
 
