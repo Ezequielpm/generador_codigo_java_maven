@@ -23,7 +23,7 @@ import view.DatabaseTables;
 import view.MainDashboard;
 import view.PopupDatabaseForm;
 import view.PopupDialog;
-import view.TablesView;
+//import view.TablesView;
 
 /**
  *
@@ -119,13 +119,13 @@ public class MainDashboardController implements ActionListener {
     }
 
     private void replacePanel() {
-        this.objMainDashboard.MainDashboardPanel.removeAll();
-        TablesView objTablesView = new TablesView();
+       // this.objMainDashboard.MainDashboardPanel.removeAll();
+        //TablesView objTablesView = new TablesView();
         CardLayout objCardLayout = new CardLayout();
-        this.objMainDashboard.MainDashboardPanel.setLayout(objCardLayout);
-        this.objMainDashboard.MainDashboardPanel.add(objTablesView, "p1");
+       // this.objMainDashboard.MainDashboardPanel.setLayout(objCardLayout);
+       // this.objMainDashboard.MainDashboardPanel.add(objTablesView, "p1");
 
-        objCardLayout.show(this.objMainDashboard.MainDashboardPanel, "p1");
+        //objCardLayout.show(this.objMainDashboard.MainDashboardPanel, "p1");
     }
 
     public void changeView(String nameView, DatabaseTables tableView) {

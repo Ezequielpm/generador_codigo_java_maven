@@ -20,7 +20,6 @@ public class MainDashboard extends javax.swing.JFrame {
         initComponents();
         this.objMainDashboardController = new MainDashboardController(this);
         this.setLocationRelativeTo(this);
-
     }
     
     public void restartComponents(){
