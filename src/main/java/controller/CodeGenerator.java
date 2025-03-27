@@ -4,7 +4,7 @@
  */
 package controller;
 
-import model.Attribute;
+import model.Column;
 import model.Table;
 
 /**
@@ -48,7 +48,7 @@ public class CodeGenerator {
         preparedCode.append("\n");
         preparedCode.append("\t");
 
-        for (Attribute attribute : this.table.getAttributeList()) {
+        for (Column attribute : this.table.getAttributeList()) {
             isSerial = 0;
             preparedCode.append(attribute.getAccess());
             preparedCode.append(" ");
@@ -113,7 +113,7 @@ public class CodeGenerator {
 
         
         //filling the vars ones
-        for (Attribute attribute : this.table.getAttributeList()) {
+        for (Column attribute : this.table.getAttributeList()) {
             isSerial = 0;
             vars.append("\n\t");
             vars.append(attribute.getAccess());

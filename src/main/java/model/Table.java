@@ -12,12 +12,12 @@ import java.util.ArrayList;
  */
 public class Table {
     String nameTable;
-    ArrayList<Attribute> attributeList;
+    ArrayList<Column> attributeList;
 
     public Table() {
     }
 
-    public Table(String nameTable, ArrayList<Attribute> attributeList) {
+    public Table(String nameTable, ArrayList<Column> attributeList) {
         this.nameTable = nameTable;
         this.attributeList = attributeList;
     }
@@ -33,11 +33,11 @@ public class Table {
         this.nameTable = nameTable;
     }
 
-    public ArrayList<Attribute> getAttributeList() {
+    public ArrayList<Column> getAttributeList() {
         return attributeList;
     }
 
-    public void setAttributeList(ArrayList<Attribute> attributeList) {
+    public void setAttributeList(ArrayList<Column> attributeList) {
         this.attributeList = attributeList;
     }
     

@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import model.Attribute;
+import model.Column;
 import model.DatabaseModel;
 import model.Table;
 
@@ -50,7 +50,7 @@ public class TablesExtractor {
                 objTable.setNameTable(tableName);
                 
                 
-                ArrayList<Attribute> attributesList = extractColumns(metaData, tableName);
+                ArrayList<Column> attributesList = extractColumns(metaData, tableName);
                 objTable.setAttributeList(attributesList);
                 
                 
@@ -80,8 +80,8 @@ public class TablesExtractor {
     
     
     
-    private ArrayList<Attribute> extractColumns(DatabaseMetaData metaData, String tableName) {
-        ArrayList<Attribute> columnsList = new ArrayList<>();
+    private ArrayList<Column> extractColumns(DatabaseMetaData metaData, String tableName) {
+        ArrayList<Column> columnsList = new ArrayList<>();
         try {
             ResultSet columns = metaData.getColumns(null, null, tableName, null);
             
@@ -91,7 +91,7 @@ public class TablesExtractor {
                 String columnType = columns.getString("TYPE_NAME");
                 //int columnSize = columns.getInt("COLUMN_SIZE");
 
-                Attribute column = new Attribute(columnName, columnType, "private");//ribute(columnName, columnType, columnSize);
+                Column column = new Column(columnName, columnType, "private");//ribute(columnName, columnType, columnSize);
                 columnsList.add(column);
 
                 System.out.println("  - " + columnName + " (" + columnType + " - " );//+ columnSize + ")");

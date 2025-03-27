@@ -8,14 +8,14 @@ package model;
  *
  * @author ezequielpena
  */
-public class Attribute {
+public class Column {
     String name, dataType, access;
     
-    public Attribute(){
+    public Column(){
         
     }
 
-    public Attribute(String name, String dataType, String access) {
+    public Column(String name, String dataType, String access) {
         this.name = name;
         this.dataType = dataType;
         this.access = access;
