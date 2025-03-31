@@ -14,6 +14,9 @@ import model.Table;
 public class CodeGenerator {
 
     Table table;
+    int getters;
+    int setters;
+    int constructors;
 
     public CodeGenerator() {
     }
@@ -39,7 +42,6 @@ public class CodeGenerator {
         StringBuilder gettersAndSetters = new StringBuilder(); //for getters and setters
         StringBuilder finale = new StringBuilder(); //for ";"
 
-        
         int isSerial = 0;
         StringBuilder preparedCode = new StringBuilder();
         preparedCode.append("public class ");
@@ -56,8 +58,7 @@ public class CodeGenerator {
             if (attribute.getDataType().contains("serial")) {
                 preparedCode.append("int");
                 isSerial = 1;
-            }
-            else if (attribute.getDataType().contains("int")) {
+            } else if (attribute.getDataType().contains("int")) {
                 preparedCode.append("int");
             } else if (attribute.getDataType().contains("varchar")) {
                 preparedCode.append("String");
@@ -68,7 +69,7 @@ public class CodeGenerator {
             preparedCode.append(" ");
             preparedCode.append(attribute.getName());
             preparedCode.append(";");
-            if(isSerial==1){
+            if (isSerial == 1) {
                 preparedCode.append(" //this is the primary key");
             }
             preparedCode.append("\n");
@@ -80,7 +81,7 @@ public class CodeGenerator {
             }*/
 
             //putting getters and setters...
-           /* StringBuilder sb = new StringBuilder();
+            /* StringBuilder sb = new StringBuilder();
             sb.append("jjjj");
             preparedCode.append(sb);*/
         }
@@ -88,11 +89,7 @@ public class CodeGenerator {
 
         return preparedCode;
     }
-    
-    
-    
-    
-    
+
     public StringBuilder generateCode2() {
         String dataType = "";
         StringBuilder libs = new StringBuilder(); //for libraries
@@ -102,7 +99,8 @@ public class CodeGenerator {
         StringBuilder gettersAndSetters = new StringBuilder(); //for getters and setters
         StringBuilder finale = new StringBuilder(); //for ";"
 
-        
+        StringBuilder constructorsAux = new StringBuilder(); //for constructors
+
         int isSerial = 0;
         StringBuilder preparedCode = new StringBuilder(); //final code
         preparedCode.append("public class ");
@@ -111,10 +109,23 @@ public class CodeGenerator {
         preparedCode.append("\n");
         preparedCode.append("\t");
 
-        
-        //filling the vars ones
+        constructors.append("public ");
+        constructors.append(this.table.getNameTable());
+        constructors.append("(){\n");
+        constructors.append("\t");
+
+        constructors.append("\n\t}\n\t");
+
+        constructors.append("public ");
+        constructors.append(this.table.getNameTable());
+        constructors.append("(");
+        //The variables should be here
+
+        //filling the vars
+        int count = 0;
         for (Column attribute : this.table.getAttributeList()) {
             isSerial = 0;
+
             //vars.append("\n\t");
             vars.append(attribute.getAccess());
             vars.append(" ");
@@ -123,8 +134,7 @@ public class CodeGenerator {
                 vars.append("int");
                 dataType = "int";
                 isSerial = 1;
-            }
-            else if (attribute.getDataType().contains("int")) {
+            } else if (attribute.getDataType().contains("int")) {
                 vars.append("int");
                 dataType = "int";
             } else if (attribute.getDataType().contains("varchar")) {
@@ -135,62 +145,114 @@ public class CodeGenerator {
                 dataType = "Date";
             }
             //preparedCode.append(attribute.getDataType());
+
+            if (this.constructors == 1) {
+                constructors.append(dataType);
+                constructors.append(" ");
+                constructors.append(attribute.getName());
+                constructors.append(", ");
+
+                if (count == 0) {
+                    constructorsAux.append("\t\tthis.");
+                } else {
+                    constructorsAux.append("\n\t\tthis.");
+                }
+
+                count++;
+                constructorsAux.append(attribute.getName());
+                constructorsAux.append(" = ");
+                constructorsAux.append(attribute.getName());
+                constructorsAux.append(";");
+            }
+
             vars.append(" ");
             vars.append(attribute.getName());
             vars.append(";");
-            if(isSerial==1){
+            if (isSerial == 1) {
                 vars.append(" //this is the primary key");
             }
             vars.append("\n");
             vars.append("\t");
-            
-            
+
             //getters
-            gettersAndSetters.append("\n\tpublic ");
-            gettersAndSetters.append(dataType);
-            gettersAndSetters.append(" get");
-            gettersAndSetters.append(attribute.getName());
-            gettersAndSetters.append("(){");
-            gettersAndSetters.append("\n");
-            gettersAndSetters.append("\t");
-            gettersAndSetters.append("\treturn ");
-            gettersAndSetters.append(attribute.getName());
-            gettersAndSetters.append(";\n\t}");
-            
+            if (getters == 1) {
+                gettersAndSetters.append("\n\tpublic ");
+                gettersAndSetters.append(dataType);
+                gettersAndSetters.append(" get");
+                gettersAndSetters.append(attribute.getName());
+                gettersAndSetters.append("(){");
+                gettersAndSetters.append("\n");
+                gettersAndSetters.append("\t");
+                gettersAndSetters.append("\treturn ");
+                gettersAndSetters.append(attribute.getName());
+                gettersAndSetters.append(";\n\t}");
+            }
+
             //setters
-            gettersAndSetters.append("\n\tpublic void set");
-            gettersAndSetters.append(attribute.getName());
-            gettersAndSetters.append("(");
-            gettersAndSetters.append(dataType);
-            gettersAndSetters.append(" ");
-            gettersAndSetters.append(attribute.getName());
-            gettersAndSetters.append("){\n\t");
-            gettersAndSetters.append("\tthis.");
-            gettersAndSetters.append(attribute.getName());
-            gettersAndSetters.append(" = ");
-            gettersAndSetters.append(attribute.getName());
-            gettersAndSetters.append(";\n\t}");
-            
-            
+            if (setters == 1) {
+                gettersAndSetters.append("\n\tpublic void set");
+                gettersAndSetters.append(attribute.getName());
+                gettersAndSetters.append("(");
+                gettersAndSetters.append(dataType);
+                gettersAndSetters.append(" ");
+                gettersAndSetters.append(attribute.getName());
+                gettersAndSetters.append("){\n\t");
+                gettersAndSetters.append("\tthis.");
+                gettersAndSetters.append(attribute.getName());
+                gettersAndSetters.append(" = ");
+                gettersAndSetters.append(attribute.getName());
+                gettersAndSetters.append(";\n\t}");
+            }
+
+
             /*if(attribute.getAccess().equals("private")){
                 preparedCode.append("private");
             }else if(attribute.getAccess().equals("public")){
                 
             }*/
-
             //putting getters and setters...
-           /* StringBuilder sb = new StringBuilder();
+            /* StringBuilder sb = new StringBuilder();
             sb.append("jjjj");
             preparedCode.append(sb);*/
         }
-        
-        
-        
+
+        constructors.append("){\n");
+        constructors.append(constructorsAux);
+        constructors.append("\t");
+        constructors.append("\n\t}\n\t");
+
         preparedCode.append(vars);
+        if (this.constructors == 1) {
+            preparedCode.append(constructors);
+        }
         preparedCode.append(gettersAndSetters);
         preparedCode.append("\n}");
 
         return preparedCode;
+    }
+
+    public int getGetters() {
+        return getters;
+    }
+
+    public void setGetters(int getters) {
+        this.getters = getters;
+    }
+
+    public int getSetters() {
+        return setters;
+    }
+
+    public void setSetters(int setters) {
+        this.setters = setters;
+    }
+
+    public int getConstructors() {
+        return constructors;
+    }
+
+    public void setConstructors(int constructors) {
+        this.constructors = constructors;
     }
 
 }

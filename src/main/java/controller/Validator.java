@@ -18,7 +18,7 @@ public class Validator {
 
     public boolean validaCajaTextoCadena(javax.swing.JTextField cajaTexto) {
         if (cajaTexto.getText().isBlank()) {
-            JOptionPane.showMessageDialog(null, "You must fill in all fields");
+            JOptionPane.showMessageDialog(null, "You must fill in all fields","Blank field not allowed",2);
             return false;
         }
         return true;
@@ -26,13 +26,13 @@ public class Validator {
 
     public boolean validaCajaTextoEntero(javax.swing.JTextField cajaTexto) {
         if (cajaTexto.getText().isBlank()) {
-            JOptionPane.showMessageDialog(null, "You must fill in all fields");
+            JOptionPane.showMessageDialog(null, "You must fill in all fields","Blank field not allowed",2);
             return false;
         } else {
             try {
                 int a = Integer.parseInt(cajaTexto.getText());
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Value not allowed, must be a number");
+                JOptionPane.showMessageDialog(null, "Value not allowed, port field must be a number","Invalid field",0);
                 System.err.println("Convertion error");
                 return false;
             }

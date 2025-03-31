@@ -24,14 +24,16 @@ public class PopupDialogUpdateController implements ActionListener {
     DatabaseModel objDatabaseModel;
 
     FileDBOperations objFileDBOperations;
-    
+
     Frame parentContainer;
+    Validator objValidator;
 
     public PopupDialogUpdateController(PopupDialogUpdate objPopUpDialogUpdate) {
         this.objFileDBOperations = new FileDBOperations();
         this.objPopUpDialogUpdate = objPopUpDialogUpdate;
         this.objPopUpDialogUpdate.updateButton.addActionListener(this);
         this.objPopUpDialogUpdate.cancelButton.addActionListener(this);
+        this.objValidator = new Validator();
     }
 
     @Override
@@ -42,19 +44,17 @@ public class PopupDialogUpdateController implements ActionListener {
         }
         if (e.getSource() == this.objPopUpDialogUpdate.updateButton) {
             //save changes
-            updateDatabase();
-            showMessage();
-            
-            MainDashboard objMainDashBoard = (MainDashboard)this.parentContainer;
-            objMainDashBoard.objMainDashboardController.showDatabaseConnections();
-            
-            this.objPopUpDialogUpdate.dispose();
+            if (validateFields()) {
+                updateDatabase();
+            }
+            // showMessage();
+
             return;
         }
     }
 
     public void showMessage() {
-        JOptionPane.showMessageDialog(objPopUpDialogUpdate, "Database saved!");
+        JOptionPane.showMessageDialog(objPopUpDialogUpdate, "Database updated!");
     }
 
     public void putInformation() {
@@ -76,9 +76,9 @@ public class PopupDialogUpdateController implements ActionListener {
     private void updateDatabase() {
         int i = 0;
         ArrayList<DatabaseModel> updatedList = this.objFileDBOperations.read();
-        for(DatabaseModel objDatabase: updatedList){
+        for (DatabaseModel objDatabase : updatedList) {
             System.out.println("buscando...");
-            
+
             /*if(objDatabase.getPort().equals(this.objDatabaseModel.getPort())){
                 System.out.println("encontrado");
                 this.objDatabaseModel.setDatabaseName(this.objPopUpDialogUpdate.databaseField.getText());
@@ -93,23 +93,24 @@ public class PopupDialogUpdateController implements ActionListener {
                 
                 break;
             }*/
-            
-            if(objDatabase.getId()==this.objDatabaseModel.getId()){
+            if (objDatabase.getId() == this.objDatabaseModel.getId()) {
                 System.out.println("encontrado");
                 this.objDatabaseModel.setDatabaseName(this.objPopUpDialogUpdate.databaseField.getText());
                 this.objDatabaseModel.setIp(this.objPopUpDialogUpdate.ipField.getText());
                 this.objDatabaseModel.setPort(this.objPopUpDialogUpdate.portField.getText());
                 this.objDatabaseModel.setUser(this.objPopUpDialogUpdate.userField.getText());
                 this.objDatabaseModel.setPassword(this.objPopUpDialogUpdate.passwordField.getText());
-                
+
                 updatedList.set(i, objDatabaseModel);
                 this.objFileDBOperations.setUpdatedListDatabases(updatedList);
                 this.objFileDBOperations.update();
-                
+                showMessage();
+                MainDashboard objMainDashBoard = (MainDashboard) this.parentContainer;
+                objMainDashBoard.objMainDashboardController.showDatabaseConnections();
+                this.objPopUpDialogUpdate.dispose();
                 break;
             }
-            
-            
+
             i++;
         }
     }
@@ -121,7 +122,25 @@ public class PopupDialogUpdateController implements ActionListener {
     public void setParentContainer(Frame parentContainer) {
         this.parentContainer = parentContainer;
     }
-    
-    
+
+    public boolean validateFields() {
+        if (!this.objValidator.validaCajaTextoCadena(this.objPopUpDialogUpdate.ipField)) {
+            return false;
+        }
+        if (!this.objValidator.validaCajaTextoEntero(this.objPopUpDialogUpdate.portField)) {
+            return false;
+        }
+        if (!this.objValidator.validaCajaTextoCadena(this.objPopUpDialogUpdate.databaseField)) {
+            return false;
+        }
+        if (!this.objValidator.validaCajaTextoCadena(this.objPopUpDialogUpdate.passwordField)) {
+            return false;
+        }
+        if (!this.objValidator.validaCajaTextoCadena(this.objPopUpDialogUpdate.userField)) {
+            return false;
+        }
+
+        return true;
+    }
 
 }
