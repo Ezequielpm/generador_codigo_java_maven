@@ -88,7 +88,7 @@ public class DBViewListController implements ActionListener {
         for (DatabaseModel objDatabase : updatedList) {
             System.out.println("buscando...");
 
-            if (objDatabase.getPort().equals(this.objDatabaseModel.getPort())) {
+            if (objDatabase.getId()==this.objDatabaseModel.getId()) {
                 System.out.println("encontrado");
                 updatedList.remove(i);
                 /* this.objDatabaseModel.setDatabaseName(this.objPopUpDialogUpdate.databaseField.getText());
