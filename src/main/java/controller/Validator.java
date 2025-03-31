@@ -33,7 +33,7 @@ public class Validator {
                 int a = Integer.parseInt(cajaTexto.getText());
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Value not allowed, must be a number");
-                System.err.println("Error de conversión");
+                System.err.println("Convertion error");
                 return false;
             }
             return true;
@@ -67,7 +67,7 @@ public class Validator {
 
     public boolean validaCadena(String cadena) {
         if (cadena.isBlank()) {
-            JOptionPane.showMessageDialog(null, "Campo requerido de la cadena");
+            JOptionPane.showMessageDialog(null, "Required field of string");
             return false;
         }
         return true;

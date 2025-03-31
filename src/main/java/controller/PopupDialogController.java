@@ -5,6 +5,7 @@
 package controller;
 
 import dao.FileDBOperations;
+import java.awt.Color;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,18 +24,21 @@ public class PopupDialogController implements ActionListener {
     // DBCodeGeneratorOperations objDBCodeGeneratorOperations;
     FileDBOperations objFileDBOperations;
     DatabaseModel objDatabaseModel;
+    Validator objValidator;
 
     Frame parentContainer;
+
     public PopupDialogController() {
     }
 
     public PopupDialogController(PopupDialog objPopupDialog) {
         //this.objDBCodeGeneratorOperations = new DBCodeGeneratorOperations();
         this.objFileDBOperations = new FileDBOperations();
-        
+
         this.objPopupDialog = objPopupDialog;
         this.objPopupDialog.cancelButton.addActionListener(this);
         this.objPopupDialog.createButton.addActionListener(this);
+        this.objValidator = new Validator();
     }
 
     @Override
@@ -45,50 +49,44 @@ public class PopupDialogController implements ActionListener {
         }
         if (e.getSource() == this.objPopupDialog.createButton) {
             //validate the fields
+            if (validateFields()) {
+                saveDatabase();
+            }
 
-            saveDatabase();
-            
             return;
         }
     }
 
     public void saveDatabase() {
-       /* DatabaseModel objDatabaseModel = new DatabaseModel(this.objPopupDialog.ipField.getText(),
+        /* DatabaseModel objDatabaseModel = new DatabaseModel(this.objPopupDialog.ipField.getText(),
                 this.objPopupDialog.portField.getText(), this.objPopupDialog.databaseField.getText(),
                 this.objPopupDialog.userField.getText(), this.objPopupDialog.passwordField.getText());*/
 
         // ya no se guardará en una base de datos
         /*objDBCodeGeneratorOperations.setObjDatabaseModel(objDatabaseModel);
         objDBCodeGeneratorOperations.create();*/
-        
-        
         //objFileDBOperations.setObjDatabaseModel(objDatabaseModel);
         //this.objFileDBOperations.create();
-        
-        
         //store in a file
-        DatabaseModel objDatabaseModel = new DatabaseModel(2,this.objPopupDialog.ipField.getText(),
+        DatabaseModel objDatabaseModel = new DatabaseModel(2, this.objPopupDialog.ipField.getText(),
                 this.objPopupDialog.portField.getText(), this.objPopupDialog.databaseField.getText(),
                 this.objPopupDialog.userField.getText(), this.objPopupDialog.passwordField.getText());
         objFileDBOperations.setObjDatabaseModel(objDatabaseModel);
         objFileDBOperations.create();
         showMessage();
-        
-        
-        
-        MainDashboard objMainDashBoard = (MainDashboard)this.parentContainer;
+
+        MainDashboard objMainDashBoard = (MainDashboard) this.parentContainer;
         objMainDashBoard.objMainDashboardController.showDatabaseConnections();
-        
+
         this.objPopupDialog.dispose();
-        
 
     }
 
     public void showMessage() {
         JOptionPane.showMessageDialog(objPopupDialog, "Database saved!");
     }
-    
-    public void putInformation(){
+
+    public void putInformation() {
         this.objPopupDialog.ipField.setText(this.objDatabaseModel.getIp());
         this.objPopupDialog.portField.setText(this.objDatabaseModel.getPort());
         this.objPopupDialog.databaseField.setText(this.objDatabaseModel.getDatabaseName());
@@ -111,9 +109,25 @@ public class PopupDialogController implements ActionListener {
     public void setParentContainer(Frame parentContainer) {
         this.parentContainer = parentContainer;
     }
-    
-    
-    
-    
+
+    public boolean validateFields() {
+        if (!this.objValidator.validaCajaTextoCadena(this.objPopupDialog.ipField)) {
+            return false;
+        }
+        if (!this.objValidator.validaCajaTextoEntero(this.objPopupDialog.portField)) {
+            return false;
+        }
+        if (!this.objValidator.validaCajaTextoCadena(this.objPopupDialog.databaseField)) {
+            return false;
+        }
+        if (!this.objValidator.validaCajaTextoCadena(this.objPopupDialog.passwordField)) {
+            return false;
+        }
+        if (!this.objValidator.validaCajaTextoCadena(this.objPopupDialog.userField)) {
+            return false;
+        }
+
+        return true;
+    }
 
 }
