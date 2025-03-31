@@ -112,10 +112,13 @@ public class MainDashboardController implements ActionListener {
 
             System.out.println("dt: " + database.getDatabaseName());
         }
-
+        
+        this.objMainDashboard.revalidate();
+        this.objMainDashboard.repaint();
+        
         this.objMainDashboard.ConnectionsPanelaux.revalidate();
         this.objMainDashboard.ConnectionsPanelaux.repaint();
-
+        
     }
 
     private void replacePanel() {

@@ -40,10 +40,10 @@ public class TablesExtractor {
         try (Connection conn = DriverManager.getConnection(url2, user, password)) {
             DatabaseMetaData metaData = conn.getMetaData();
 
-            // Obtener las tablas de la base de datos
+            // gets tables from the database
             ResultSet tables = metaData.getTables(null, null, "%", new String[]{"TABLE"});
 
-            System.out.println("Tablas en la base de datos:");
+            System.out.println("Tablas en la base de datos...");
             while (tables.next()) {
                 Table objTable = new Table();
                 String tableName = tables.getString("TABLE_NAME");
@@ -85,13 +85,13 @@ public class TablesExtractor {
         try {
             ResultSet columns = metaData.getColumns(null, null, tableName, null);
             
-            System.out.println("Columnas de la tabla " + tableName + ":");
+            System.out.println("Columnas de la tabla " + tableName + "...");
             while (columns.next()) {
                 String columnName = columns.getString("COLUMN_NAME");
                 String columnType = columns.getString("TYPE_NAME");
                 //int columnSize = columns.getInt("COLUMN_SIZE");
 
-                Column column = new Column(columnName, columnType, "private");//ribute(columnName, columnType, columnSize);
+                Column column = new Column(columnName, columnType, "private");//atribute(columnName, columnType, columnSize);
                 columnsList.add(column);
 
                 System.out.println("  - " + columnName + " (" + columnType + " - " );//+ columnSize + ")");

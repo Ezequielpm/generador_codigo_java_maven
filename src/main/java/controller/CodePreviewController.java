@@ -7,6 +7,7 @@ package controller;
 import dao.SaveFileCode;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import model.Table;
 import view.CodePreview;
 
@@ -34,8 +35,9 @@ public class CodePreviewController implements ActionListener{
             return;
         }
         if(e.getSource()==this.objCodePreview.saveButtton){
-            
             saveCode();
+            showMessage();
+            this.objCodePreview.dispose();
             return;
         }
         
@@ -66,5 +68,9 @@ public class CodePreviewController implements ActionListener{
         SaveFileCode objSaveFileCode = new SaveFileCode(generatedCode);
         objSaveFileCode.setFileName(this.objTable.getNameTable());
         objSaveFileCode.storeCode();
+    }
+    
+    private void showMessage(){
+        JOptionPane.showMessageDialog(objCodePreview, "Code saved succesfully!");
     }
 }

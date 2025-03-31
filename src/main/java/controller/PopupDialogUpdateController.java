@@ -79,7 +79,22 @@ public class PopupDialogUpdateController implements ActionListener {
         for(DatabaseModel objDatabase: updatedList){
             System.out.println("buscando...");
             
-            if(objDatabase.getPort().equals(this.objDatabaseModel.getPort())){
+            /*if(objDatabase.getPort().equals(this.objDatabaseModel.getPort())){
+                System.out.println("encontrado");
+                this.objDatabaseModel.setDatabaseName(this.objPopUpDialogUpdate.databaseField.getText());
+                this.objDatabaseModel.setIp(this.objPopUpDialogUpdate.ipField.getText());
+                this.objDatabaseModel.setPort(this.objPopUpDialogUpdate.portField.getText());
+                this.objDatabaseModel.setUser(this.objPopUpDialogUpdate.userField.getText());
+                this.objDatabaseModel.setPassword(this.objPopUpDialogUpdate.passwordField.getText());
+                
+                updatedList.set(i, objDatabaseModel);
+                this.objFileDBOperations.setUpdatedListDatabases(updatedList);
+                this.objFileDBOperations.update();
+                
+                break;
+            }*/
+            
+            if(objDatabase.getId()==this.objDatabaseModel.getId()){
                 System.out.println("encontrado");
                 this.objDatabaseModel.setDatabaseName(this.objPopUpDialogUpdate.databaseField.getText());
                 this.objDatabaseModel.setIp(this.objPopUpDialogUpdate.ipField.getText());
@@ -93,6 +108,8 @@ public class PopupDialogUpdateController implements ActionListener {
                 
                 break;
             }
+            
+            
             i++;
         }
     }

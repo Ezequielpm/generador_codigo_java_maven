@@ -54,7 +54,7 @@ public class DBViewList extends javax.swing.JPanel {
         nameDB.setText("Name database");
 
         removeButton.setBackground(new java.awt.Color(255, 0, 102));
-        removeButton.setText("Remove");
+        removeButton.setText("Delete");
 
         viewButton.setBackground(new java.awt.Color(153, 255, 51));
         viewButton.setText("View");
@@ -70,7 +70,7 @@ public class DBViewList extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(41, 41, 41)
                 .addComponent(nameDB)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                 .addComponent(viewButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(editButton)
