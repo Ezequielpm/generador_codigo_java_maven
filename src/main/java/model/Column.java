@@ -9,10 +9,12 @@ package model;
  * @author ezequielpena
  */
 public class Column {
+
     String name, dataType, access;
-    
-    public Column(){
-        
+    private boolean isPrimaryKey;
+
+    public Column() {
+
     }
 
     public Column(String name, String dataType, String access) {
@@ -20,7 +22,7 @@ public class Column {
         this.dataType = dataType;
         this.access = access;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -44,6 +46,14 @@ public class Column {
     public void setAccess(String access) {
         this.access = access;
     }
-    
-    
+
+
+    public boolean isPrimaryKey() {
+        return isPrimaryKey;
+    }
+
+    public void setPrimaryKey(boolean isPrimaryKey) {
+        this.isPrimaryKey = isPrimaryKey;
+    }
+
 }

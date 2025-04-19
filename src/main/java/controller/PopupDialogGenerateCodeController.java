@@ -68,6 +68,9 @@ public class PopupDialogGenerateCodeController implements ActionListener {
          if(this.objPopupDialogGenerateCode.checkConstructors.isSelected()){
              objCodeGenerator.setConstructors(1);
          }
+         if(this.objPopupDialogGenerateCode.checkAnnotations.isSelected()){
+             objCodeGenerator.setAnnotations(1);
+         }
             
          
          StringBuilder code = objCodeGenerator.generateCode2();

@@ -4,7 +4,6 @@
  */
 package view;
 import controller.MainDashboardController;
-import java.awt.Color;
 
 /**
  *
@@ -21,6 +20,7 @@ public class MainDashboard extends javax.swing.JFrame {
         this.objMainDashboardController = new MainDashboardController(this);
         this.setLocationRelativeTo(this);
     }
+    
     
     public void restartComponents(){
         initComponents();

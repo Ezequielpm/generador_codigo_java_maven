@@ -17,6 +17,7 @@ public class CodeGenerator {
     int getters;
     int setters;
     int constructors;
+    int annotations;
 
     public CodeGenerator() {
     }
@@ -33,6 +34,16 @@ public class CodeGenerator {
         this.table = table;
     }
 
+    public int getAnnotations() {
+        return annotations;
+    }
+
+    public void setAnnotations(int annotations) {
+        this.annotations = annotations;
+    }
+    
+    
+
     //this fuction must to return a string with the generated code
     public StringBuilder generateCode() {
         StringBuilder libs = new StringBuilder(); //for libraries
@@ -44,6 +55,7 @@ public class CodeGenerator {
 
         int isSerial = 0;
         StringBuilder preparedCode = new StringBuilder();
+        
         preparedCode.append("public class ");
         preparedCode.append(this.table.getNameTable().toUpperCase());
         preparedCode.append(" {");
@@ -103,6 +115,11 @@ public class CodeGenerator {
 
         int isSerial = 0;
         StringBuilder preparedCode = new StringBuilder(); //final code
+        if(annotations==1){
+            preparedCode.append("@Entity\n");
+            preparedCode.append("@Table(name = "+"\""+this.table.getNameTable()+"\""+")\n");
+        }
+        
         preparedCode.append("public class ");
         preparedCode.append(this.table.getNameTable().toUpperCase());
         preparedCode.append(" {");
@@ -127,10 +144,19 @@ public class CodeGenerator {
             isSerial = 0;
 
             //vars.append("\n\t");
+            if(annotations==1){
+                if(attribute.isPrimaryKey()){
+                vars.append("@Id\n\t");
+            }
+            vars.append("@Column(name = "+"\""+attribute.getName()+"\""+")\n\t");
+            }
+            
+                    
+                    
             vars.append(attribute.getAccess());
             vars.append(" ");
 
-            if (attribute.getDataType().contains("serial")) {
+            /*if (attribute.getDataType().contains("serial")) {
                 vars.append("int");
                 dataType = "int";
                 isSerial = 1;
@@ -143,7 +169,10 @@ public class CodeGenerator {
             } else if (attribute.getDataType().contains("date")) {
                 vars.append("Date");
                 dataType = "Date";
-            }
+            }*/
+            
+            dataType = transformSQLTypeToJavaType(attribute.getDataType());
+            vars.append(dataType);
             //preparedCode.append(attribute.getDataType());
 
             if (this.constructors == 1) {
@@ -229,6 +258,23 @@ public class CodeGenerator {
         preparedCode.append("\n}");
 
         return preparedCode;
+    }
+    
+    
+    
+    private String transformSQLTypeToJavaType(String sqlType){
+        switch(sqlType.toUpperCase()){
+            case "VARCHAR","TEXT","CHAR","LONGTEXT": return "String";
+            case "INT","INTEGER","SMALLINT","SERIAL": return "int";
+            case "BIGINT": return "long";
+            case "FLOAT","REAL": return "float";
+            case "DOUBLE", "DECIMAL", "NUMERIC": return "double";
+            case "DATE": return "java.time.LocalDate";
+            case "TIME": return "java.time.LocalTime";
+            case "TIMESTAMP","DATETIME": return "java.time.LocalDateTime";
+            case "BOOLEAN","BIT": return "boolean";
+            default: return "String";
+        }
     }
 
     public int getGetters() {

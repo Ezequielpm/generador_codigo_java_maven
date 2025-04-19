@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import model.Column;
 import model.DatabaseModel;
 import model.Table;
-
 /**
  *
  * @author ezequielpena
@@ -42,7 +41,6 @@ public class TablesExtractor {
 
             // gets tables from the database
             ResultSet tables = metaData.getTables(null, null, "%", new String[]{"TABLE"});
-
             System.out.println("Tablas en la base de datos...");
             while (tables.next()) {
                 Table objTable = new Table();
@@ -82,7 +80,17 @@ public class TablesExtractor {
     
     private ArrayList<Column> extractColumns(DatabaseMetaData metaData, String tableName) {
         ArrayList<Column> columnsList = new ArrayList<>();
+        ArrayList<String> primaryKeys = new ArrayList<>();
+
         try {
+            ResultSet pkResultSet = metaData.getPrimaryKeys(null, null, tableName);
+        while (pkResultSet.next()) {
+            String pkColumnName = pkResultSet.getString("COLUMN_NAME");
+            primaryKeys.add(pkColumnName);
+        }
+        pkResultSet.close();
+            
+            
             ResultSet columns = metaData.getColumns(null, null, tableName, null);
             
             System.out.println("Columnas de la tabla " + tableName + "...");
@@ -90,8 +98,10 @@ public class TablesExtractor {
                 String columnName = columns.getString("COLUMN_NAME");
                 String columnType = columns.getString("TYPE_NAME");
                 //int columnSize = columns.getInt("COLUMN_SIZE");
+                boolean isPrimaryKey = primaryKeys.contains(columnName);
 
                 Column column = new Column(columnName, columnType, "private");//atribute(columnName, columnType, columnSize);
+                column.setPrimaryKey(isPrimaryKey);
                 columnsList.add(column);
 
                 System.out.println("  - " + columnName + " (" + columnType + " - " );//+ columnSize + ")");
