@@ -19,6 +19,7 @@ public class PopupDialogGenerateCodeController implements ActionListener {
     PopupDialogGenerateCode objPopupDialogGenerateCode;
     Table objTable;
     String generatedCode;
+    String daoCode;
     public PopupDialogGenerateCodeController(PopupDialogGenerateCode objPopupDialogGenerateCode) {
         this.objPopupDialogGenerateCode = objPopupDialogGenerateCode;
         this.objPopupDialogGenerateCode.cancelButton.addActionListener(this);
@@ -34,9 +35,15 @@ public class PopupDialogGenerateCodeController implements ActionListener {
         if (e.getSource() == this.objPopupDialogGenerateCode.generateButton) {
             CodePreview objCodePreview = new CodePreview(null, true);
             objCodePreview.objCodePreviewController.setObjTable(objTable);
-            generatedCode = generateCode();
+            //generatedCode = generateCode();
+            generateCode();
+            
+            
             //objCodePreview.codeArea.setText(generatedCode);
             objCodePreview.objCodePreviewController.setGeneratedCode(generatedCode);
+            
+            objCodePreview.objCodePreviewController.setDaoCode(daoCode);
+            
             objCodePreview.objCodePreviewController.showGeneratedCode();
             
             
@@ -55,7 +62,7 @@ public class PopupDialogGenerateCodeController implements ActionListener {
         this.objTable = objTable;
     }
     
-    private String generateCode(){
+    private void generateCode(){
          CodeGenerator objCodeGenerator = new CodeGenerator();
          objCodeGenerator.setTable(objTable);
          
@@ -71,11 +78,18 @@ public class PopupDialogGenerateCodeController implements ActionListener {
          if(this.objPopupDialogGenerateCode.checkAnnotations.isSelected()){
              objCodeGenerator.setAnnotations(1);
          }
+         if(this.objPopupDialogGenerateCode.checkDao.isSelected()){
+             objCodeGenerator.setGenerateDao(true);
+         }
             
          
          StringBuilder code = objCodeGenerator.generateCode2();
+         
          generatedCode = code.toString();
-         return generatedCode;
+         
+         StringBuilder repositoryCode = objCodeGenerator.generateDaoCode();
+         daoCode = repositoryCode.toString();
+         //return generatedCode;
     }
     
     

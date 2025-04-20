@@ -18,6 +18,7 @@ public class CodeGenerator {
     int setters;
     int constructors;
     int annotations;
+    private boolean generateDao;
 
     public CodeGenerator() {
     }
@@ -262,6 +263,8 @@ public class CodeGenerator {
     
     
     
+    
+    
     private String transformSQLTypeToJavaType(String sqlType){
         switch(sqlType.toUpperCase()){
             case "VARCHAR","TEXT","CHAR","LONGTEXT": return "String";
@@ -299,6 +302,82 @@ public class CodeGenerator {
 
     public void setConstructors(int constructors) {
         this.constructors = constructors;
+    }
+    
+    public boolean isGenerateDao() {
+        return generateDao;
+    }
+
+    public void setGenerateDao(boolean generateDao) {
+        this.generateDao = generateDao;
+    }
+    
+    public StringBuilder generateDaoCode() {
+        if (!generateDao) {
+            return new StringBuilder(); 
+        }
+
+        StringBuilder daoCode = new StringBuilder();
+        String entityName = table.getNameTable().toUpperCase(); 
+        String idType = getIdColumnType(table);
+
+        daoCode.append(generateDaoInterfaceCode(table));
+
+        return daoCode;
+    }
+    
+    public StringBuilder generateDaoInterfaceCode(Table table) {
+        StringBuilder interfaceCode = new StringBuilder();
+        String entityName = table.getNameTable().toUpperCase();
+        String idType = getIdColumnType(table);
+
+        interfaceCode.append("package com.example.demo.repository;\n\n"); // Replace with your package
+        interfaceCode.append("import com.example.demo.model.").append(entityName).append(";\n"); // Import Entity
+        interfaceCode.append("import org.springframework.data.jpa.repository.JpaRepository;\n");
+        interfaceCode.append("import org.springframework.stereotype.Repository;\n\n");
+        interfaceCode.append("import java.util.List;\n");
+        interfaceCode.append("import java.util.Optional;\n\n");
+
+        interfaceCode.append("@Repository\n");
+        interfaceCode.append(generateDaoInterfaceDeclaration(entityName, entityName, idType));
+        interfaceCode.append("{\n\n");
+        interfaceCode.append(generateCustomRepositoryMethods(table));
+        interfaceCode.append("}\n");
+
+        return interfaceCode;
+    }
+
+     private StringBuilder generateDaoInterfaceDeclaration(String interfaceName, String entityType, String idType) {
+        return new StringBuilder("public interface " + interfaceName + "Repository extends JpaRepository<" + entityType + ", " + idType + "> ");
+    }
+
+    private StringBuilder generateCustomRepositoryMethods(Table table) {
+        StringBuilder methods = new StringBuilder();
+
+        for (Column column : table.getAttributeList()) {
+            String javaType = transformSQLTypeToJavaType(column.getDataType()); 
+            String columnName = column.getName();
+            String capitalizedColumnName = columnName.substring(0, 1).toUpperCase() + columnName.substring(1);
+
+            if (javaType.equals("String")) {
+                methods.append("\tOptional<").append(table.getNameTable().toUpperCase()).append("> findBy").append(capitalizedColumnName).append("(String ").append(columnName).append(");\n\n");
+                methods.append("\tboolean existsBy").append(capitalizedColumnName).append("(String ").append(columnName).append(");\n\n");
+                methods.append("\tList<").append(table.getNameTable().toUpperCase()).append("> findBy").append(capitalizedColumnName).append("Containing(String ").append(columnName).append(");\n\n");
+            } else if (javaType.equals("int") || javaType.equals("long")) {
+                methods.append("\tList<").append(table.getNameTable().toUpperCase()).append("> findBy").append(capitalizedColumnName).append("(").append(javaType).append(" ").append(columnName).append(");\n\n");
+            }
+        }
+
+        return methods;
+    }
+    
+    private String getIdColumnType(Table table) {
+        for (Column column : table.getAttributeList()) {
+            if (column.isPrimaryKey()) {
+                return transformSQLTypeToJavaType(column.getDataType());
+            }
+        }
+        return "Long"; //default to Long if no primary key is found 
     }
 
 }

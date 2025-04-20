@@ -15,12 +15,18 @@ import javax.swing.JFileChooser;
 public class SaveFileCode {
     String generatedCode;
     String fileName;
+    String daoCode = "";
 
     public SaveFileCode() {
     }
 
-    public SaveFileCode(String generatedCode) {
+    public SaveFileCode(String generatedCode, String daoCode) {
         this.generatedCode = generatedCode;
+        if(daoCode!=null){
+            this.daoCode = daoCode;
+        }
+        
+        
     }
 
     public String getGeneratedCode() {
@@ -38,6 +44,16 @@ public class SaveFileCode {
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
+
+    public String getDaoCode() {
+        return daoCode;
+    }
+
+    public void setDaoCode(String daoCode) {
+        this.daoCode = daoCode;
+    }
+    
+    
     
     
     
@@ -62,7 +78,7 @@ public class SaveFileCode {
             
             // Llamar a la clase generadora con la ruta obtenida
             ClassGenerator generator = new ClassGenerator();
-            generator.setGeneratedCode(generatedCode);
+            generator.setGeneratedCode(generatedCode+"\n"+daoCode);
             generator.generateClass(path, fileName);
             
             System.out.println("Archivo creado en: " + path);

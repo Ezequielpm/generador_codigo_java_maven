@@ -18,6 +18,7 @@ import view.CodePreview;
 public class CodePreviewController implements ActionListener{
     CodePreview objCodePreview;
     String generatedCode;
+    String daoCode;
     Table objTable;
     public CodePreviewController(CodePreview objCodePreview) {
         this.objCodePreview = objCodePreview;
@@ -44,7 +45,7 @@ public class CodePreviewController implements ActionListener{
     }
     
     public void showGeneratedCode(){
-        this.objCodePreview.codeArea.setText(generatedCode);
+        this.objCodePreview.codeArea.setText(generatedCode+daoCode);
     }
 
     public String getGeneratedCode() {
@@ -65,7 +66,7 @@ public class CodePreviewController implements ActionListener{
     
     
     public void saveCode(){
-        SaveFileCode objSaveFileCode = new SaveFileCode(generatedCode);
+        SaveFileCode objSaveFileCode = new SaveFileCode(generatedCode, daoCode);
         objSaveFileCode.setFileName(this.objTable.getNameTable());
         objSaveFileCode.storeCode();
     }
@@ -73,4 +74,14 @@ public class CodePreviewController implements ActionListener{
     private void showMessage(){
         JOptionPane.showMessageDialog(objCodePreview, "Code saved succesfully!");
     }
+
+    public String getDaoCode() {
+        return daoCode;
+    }
+
+    public void setDaoCode(String daoCode) {
+        this.daoCode = daoCode;
+    }
+    
+    
 }
