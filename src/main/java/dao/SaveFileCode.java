@@ -16,14 +16,18 @@ public class SaveFileCode {
     String generatedCode;
     String fileName;
     String daoCode = "";
+    String idClassCode = "";
 
     public SaveFileCode() {
     }
 
-    public SaveFileCode(String generatedCode, String daoCode) {
+    public SaveFileCode(String generatedCode, String daoCode, String idClassCode) {
         this.generatedCode = generatedCode;
         if(daoCode!=null){
             this.daoCode = daoCode;
+        }
+        if(idClassCode!=null){
+            this.idClassCode = idClassCode;
         }
         
         
@@ -52,6 +56,16 @@ public class SaveFileCode {
     public void setDaoCode(String daoCode) {
         this.daoCode = daoCode;
     }
+
+    public String getIdClassCode() {
+        return idClassCode;
+    }
+
+    public void setIdClassCode(String idClassCode) {
+        this.idClassCode = idClassCode;
+    }
+    
+    
     
     
     
@@ -78,7 +92,7 @@ public class SaveFileCode {
             
             // Llamar a la clase generadora con la ruta obtenida
             ClassGenerator generator = new ClassGenerator();
-            generator.setGeneratedCode(generatedCode+"\n"+daoCode);
+            generator.setGeneratedCode(generatedCode+"\n"+idClassCode+"\n"+daoCode);
             generator.generateClass(path, fileName);
             
             System.out.println("Archivo creado en: " + path);

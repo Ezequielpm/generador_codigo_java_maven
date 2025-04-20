@@ -20,6 +20,7 @@ public class CodePreviewController implements ActionListener{
     String generatedCode;
     String daoCode;
     Table objTable;
+    private String generatedIdClassCode = "\n";
     public CodePreviewController(CodePreview objCodePreview) {
         this.objCodePreview = objCodePreview;
         this.objCodePreview.cancelButton.addActionListener(this);
@@ -45,7 +46,15 @@ public class CodePreviewController implements ActionListener{
     }
     
     public void showGeneratedCode(){
-        this.objCodePreview.codeArea.setText(generatedCode+daoCode);
+        this.objCodePreview.codeArea.setText(generatedCode+generatedIdClassCode+daoCode);
+        
+        /*StringBuilder allCode = new StringBuilder();
+        allCode.append(generatedCode).append("\n\n");
+        if (generatedIdClassCode != null && !generatedIdClassCode.isEmpty()) {
+            allCode.append(generatedIdClassCode).append("\n\n");
+        }
+        allCode.append(daoCode);
+        this.objCodePreview.codeArea.setText(allCode.toString());*/
     }
 
     public String getGeneratedCode() {
@@ -66,7 +75,7 @@ public class CodePreviewController implements ActionListener{
     
     
     public void saveCode(){
-        SaveFileCode objSaveFileCode = new SaveFileCode(generatedCode, daoCode);
+        SaveFileCode objSaveFileCode = new SaveFileCode(generatedCode, daoCode, generatedIdClassCode);
         objSaveFileCode.setFileName(this.objTable.getNameTable());
         objSaveFileCode.storeCode();
     }
@@ -82,6 +91,15 @@ public class CodePreviewController implements ActionListener{
     public void setDaoCode(String daoCode) {
         this.daoCode = daoCode;
     }
+
+    public String getGeneratedIdClassCode() {
+        return generatedIdClassCode;
+    }
+
+    public void setGeneratedIdClassCode(String generatedIdClassCode) {
+        this.generatedIdClassCode = generatedIdClassCode;
+    }
+    
     
     
 }
