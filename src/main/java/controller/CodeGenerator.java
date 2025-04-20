@@ -331,8 +331,8 @@ public class CodeGenerator {
         String entityName = table.getNameTable().toUpperCase();
         String idType = getIdColumnType(table);
 
-        interfaceCode.append("package com.example.demo.repository;\n\n"); // Replace with your package
-        interfaceCode.append("import com.example.demo.model.").append(entityName).append(";\n"); // Import Entity
+        interfaceCode.append("package com.example.demo.repository;\n\n"); 
+        interfaceCode.append("import com.example.demo.model.").append(entityName).append(";\n"); 
         interfaceCode.append("import org.springframework.data.jpa.repository.JpaRepository;\n");
         interfaceCode.append("import org.springframework.stereotype.Repository;\n\n");
         interfaceCode.append("import java.util.List;\n");
