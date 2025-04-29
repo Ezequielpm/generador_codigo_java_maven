@@ -34,6 +34,7 @@ public class TableViewList extends javax.swing.JPanel {
         nameTable = new javax.swing.JLabel();
         generateButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        generateButton1 = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(31, 31, 31));
 
@@ -47,6 +48,10 @@ public class TableViewList extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon("/Users/ezequielpena/NetBeansProjects/generador_codigo_java_maven/src/resources/icons/tableIcon.png")); // NOI18N
 
+        generateButton1.setBackground(new java.awt.Color(255, 0, 255));
+        generateButton1.setText("Generate DAO");
+        generateButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -56,7 +61,9 @@ public class TableViewList extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(250, 250, 250)
                 .addComponent(generateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(generateButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(113, 113, 113)
@@ -69,7 +76,9 @@ public class TableViewList extends javax.swing.JPanel {
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
-                    .addComponent(generateButton))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(generateButton)
+                        .addComponent(generateButton1)))
                 .addContainerGap(21, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -93,6 +102,7 @@ public class TableViewList extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton generateButton;
+    public javax.swing.JButton generateButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JLabel nameTable;

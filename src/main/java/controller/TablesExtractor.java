@@ -62,7 +62,9 @@ public class TablesExtractor {
 
             tables.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error al intentar conectar a la base de datos \""+objDatabaseModel.getDatabaseName()+"\"");
+            System.err.println("Revise los datos proporcionados");
+            //e.printStackTrace();
         }
         return tablesList;
     }

@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
+import javax.swing.JLabel;
 import model.DatabaseModel;
 import model.Table;
 import view.DBViewList;
@@ -60,6 +61,15 @@ public class DatabaseTablesController implements ActionListener {
     public void showTables() {
         TablesExtractor objTablesExtractor = new TablesExtractor(objDatabaseModel);
         ArrayList<Table> listTables = objTablesExtractor.extractTables();
+        
+        //validate that at least one table exists
+        if(listTables.isEmpty()){
+           this.objDatabaseTables.interPanel.setLayout(new BoxLayout(this.objDatabaseTables.interPanel, BoxLayout.Y_AXIS));
+            JLabel mensaje = new JLabel();
+            mensaje.setText("Error");
+           return;
+            
+        }
 
         //MainDashboard objMainDashboard = (MainDashboard)this.parentContainer;
         this.objDatabaseTables.interPanel.setLayout(new BoxLayout(this.objDatabaseTables.interPanel, BoxLayout.Y_AXIS));

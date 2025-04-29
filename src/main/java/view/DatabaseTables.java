@@ -45,7 +45,8 @@ public class DatabaseTables extends javax.swing.JPanel {
         nameDatabase.setForeground(new java.awt.Color(255, 255, 255));
         nameDatabase.setText("Name database");
 
-        scrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        interPanel.setBackground(new java.awt.Color(31, 31, 31));
+        interPanel.setToolTipText("");
 
         javax.swing.GroupLayout interPanelLayout = new javax.swing.GroupLayout(interPanel);
         interPanel.setLayout(interPanelLayout);
