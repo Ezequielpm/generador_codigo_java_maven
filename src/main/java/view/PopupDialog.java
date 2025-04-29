@@ -37,7 +37,6 @@ public class PopupDialog extends javax.swing.JDialog {
         portField = new javax.swing.JTextField();
         databaseField = new javax.swing.JTextField();
         userField = new javax.swing.JTextField();
-        passwordField = new javax.swing.JTextField();
         cancelButton = new javax.swing.JButton();
         createButton = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
@@ -45,6 +44,7 @@ public class PopupDialog extends javax.swing.JDialog {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        passwordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -55,8 +55,6 @@ public class PopupDialog extends javax.swing.JDialog {
         databaseField.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
 
         userField.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-
-        passwordField.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
 
         cancelButton.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         cancelButton.setText("Cancel");
@@ -81,22 +79,21 @@ public class PopupDialog extends javax.swing.JDialog {
         jLabel20.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel20.setText("IP:");
 
+        passwordField.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        passwordField.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ipField, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(portField, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(databaseField, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(userField, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(121, 121, 121)
-                        .addComponent(createButton, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(passwordField)
+                    .addComponent(ipField)
+                    .addComponent(portField)
+                    .addComponent(databaseField)
+                    .addComponent(userField)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,7 +101,11 @@ public class PopupDialog extends javax.swing.JDialog {
                             .addComponent(jLabel19)
                             .addComponent(jLabel18)
                             .addComponent(jLabel17)
-                            .addComponent(jLabel16))))
+                            .addComponent(jLabel16)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(121, 121, 121)
+                        .addComponent(createButton, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -130,7 +131,7 @@ public class PopupDialog extends javax.swing.JDialog {
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -192,7 +193,7 @@ public class PopupDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
-    public javax.swing.JTextField passwordField;
+    public javax.swing.JPasswordField passwordField;
     public javax.swing.JTextField portField;
     public javax.swing.JTextField userField;
     // End of variables declaration//GEN-END:variables

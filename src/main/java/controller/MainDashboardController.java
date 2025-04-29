@@ -5,6 +5,7 @@
 package controller;
 
 import dao.FileDBOperations;
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -23,6 +24,7 @@ import view.DatabaseTables;
 import view.MainDashboard;
 import view.PopupDatabaseForm;
 import view.PopupDialog;
+import view.Settings;
 //import view.TablesView;
 
 /**
@@ -47,6 +49,7 @@ public class MainDashboardController implements ActionListener {
         this.objFileDBOperations = new FileDBOperations();
         this.objMainDashboard = objMainDashboard;
         this.objMainDashboard.connectDBButton.addActionListener(this);
+        this.objMainDashboard.settingsButton.addActionListener(this);
         this.objMainDashboard.panelContainer.getVerticalScrollBar().setUnitIncrement(10);
         showDatabaseConnections();
 
@@ -64,6 +67,38 @@ public class MainDashboardController implements ActionListener {
             objDialog.objPopupDialogController.setParentContainer(objMainDashboard);
             objDialog.setVisible(true);
             //showDatabaseConnections();
+            return;
+        }
+        if(e.getSource()==this.objMainDashboard.settingsButton){
+            this.objMainDashboard.MainDashboardPanel.removeAll();
+
+    Settings objSettings = new Settings();
+
+    this.objMainDashboard.MainDashboardPanel.setLayout(new BorderLayout()); // ¡Solo si aún no lo habías hecho!
+    this.objMainDashboard.MainDashboardPanel.add(objSettings, BorderLayout.CENTER);
+
+    this.objMainDashboard.MainDashboardPanel.revalidate();
+    this.objMainDashboard.MainDashboardPanel.repaint();
+            
+            
+            
+          /*  this.objMainDashboard.MainDashboardPanel.removeAll();
+            this.objMainDashboard.MainDashboardPanel.revalidate();
+            this.objMainDashboard.MainDashboardPanel.repaint();
+            Settings objSettings = new Settings();
+            this.objMainDashboard.MainDashboardPanel.add(objSettings);
+            */
+          
+           // this.objMainDashboard.revalidate();
+        //this.objMainDashboard.repaint();
+
+            
+            //this.objMainDashboard.MainDashboardPanel.repaint();
+            
+            
+          // objSettings.setVisible(true);
+             
+            return;
         }
     }
 
