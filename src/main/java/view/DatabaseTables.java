@@ -34,6 +34,7 @@ public class DatabaseTables extends javax.swing.JPanel {
         nameDatabase = new javax.swing.JLabel();
         scrollPanel = new javax.swing.JScrollPane();
         interPanel = new javax.swing.JPanel();
+        errorMessage = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(703, 400));
@@ -48,15 +49,25 @@ public class DatabaseTables extends javax.swing.JPanel {
         interPanel.setBackground(new java.awt.Color(31, 31, 31));
         interPanel.setToolTipText("");
 
+        errorMessage.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        errorMessage.setForeground(new java.awt.Color(255, 51, 0));
+        errorMessage.setText("Ocurrió un error al intentar conectarse a la base de datos");
+
         javax.swing.GroupLayout interPanelLayout = new javax.swing.GroupLayout(interPanel);
         interPanel.setLayout(interPanelLayout);
         interPanelLayout.setHorizontalGroup(
             interPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGroup(interPanelLayout.createSequentialGroup()
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addComponent(errorMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(568, Short.MAX_VALUE))
         );
         interPanelLayout.setVerticalGroup(
             interPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
+            .addGroup(interPanelLayout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(errorMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(300, Short.MAX_VALUE))
         );
 
         scrollPanel.setViewportView(interPanel);
@@ -108,6 +119,7 @@ public class DatabaseTables extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton backButton;
+    public javax.swing.JLabel errorMessage;
     public javax.swing.JPanel interPanel;
     public javax.swing.JPanel mainPanel;
     public javax.swing.JLabel nameDatabase;

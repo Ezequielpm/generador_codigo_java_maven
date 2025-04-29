@@ -65,11 +65,10 @@ public class DatabaseTablesController implements ActionListener {
         //validate that at least one table exists
         if(listTables.isEmpty()){
            this.objDatabaseTables.interPanel.setLayout(new BoxLayout(this.objDatabaseTables.interPanel, BoxLayout.Y_AXIS));
-            JLabel mensaje = new JLabel();
-            mensaje.setText("Error");
            return;
             
         }
+        this.objDatabaseTables.interPanel.remove(this.objDatabaseTables.errorMessage);
 
         //MainDashboard objMainDashboard = (MainDashboard)this.parentContainer;
         this.objDatabaseTables.interPanel.setLayout(new BoxLayout(this.objDatabaseTables.interPanel, BoxLayout.Y_AXIS));
