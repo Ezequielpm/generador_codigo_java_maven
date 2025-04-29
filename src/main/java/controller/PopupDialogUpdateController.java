@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.DatabaseModel;
+import utils.Logger;
 import view.PopupDialogUpdate;
 import view.MainDashboard;
 
@@ -46,6 +47,7 @@ public class PopupDialogUpdateController implements ActionListener {
             //save changes
             if (validateFields()) {
                 updateDatabase();
+                Logger.log("UPDATE", "Updated database '" + this.getObjDatabaseModel().getDatabaseName() + "'");
             }
             // showMessage();
 

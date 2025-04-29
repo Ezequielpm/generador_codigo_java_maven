@@ -19,6 +19,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import model.DatabaseModel;
+import view.About;
+import view.Activity;
 import view.DBViewList;
 import view.DatabaseTables;
 import view.MainDashboard;
@@ -51,6 +53,8 @@ public class MainDashboardController implements ActionListener {
         this.objMainDashboard.connectDBButton.addActionListener(this);
         this.objMainDashboard.settingsButton.addActionListener(this);
         this.objMainDashboard.dashboardButton.addActionListener(this);
+        this.objMainDashboard.activityButton.addActionListener(this);
+        this.objMainDashboard.aboutButton.addActionListener(this);
         this.objMainDashboard.panelContainer.getVerticalScrollBar().setUnitIncrement(10);
         showDatabaseConnections();
 
@@ -95,6 +99,14 @@ public class MainDashboardController implements ActionListener {
         }
         if(e.getSource()==this.objMainDashboard.dashboardButton){
             restoreRightEdge();
+            return;
+        }
+        if(e.getSource()==this.objMainDashboard.aboutButton){
+            showAbout();
+            return;
+        }
+        if(e.getSource()==this.objMainDashboard.activityButton){
+            showActivity();
             return;
         }
     }
@@ -188,6 +200,25 @@ public class MainDashboardController implements ActionListener {
         
         this.objMainDashboard.revalidate();
         this.objMainDashboard.repaint();*/
+    }
+    
+    public void showActivity(){
+        this.objMainDashboard.MainDashboardPanel.removeAll();
+        Activity objActivity = new Activity();
+        this.objMainDashboard.MainDashboardPanel.setLayout(new BorderLayout());
+        this.objMainDashboard.MainDashboardPanel.add(objActivity, BorderLayout.CENTER);
+        this.objMainDashboard.MainDashboardPanel.revalidate();
+        this.objMainDashboard.MainDashboardPanel.repaint();
+    }
+    
+    public void showAbout(){
+        this.objMainDashboard.MainDashboardPanel.removeAll();
+        About objAbout = new About();
+
+        this.objMainDashboard.MainDashboardPanel.setLayout(new BorderLayout());
+        this.objMainDashboard.MainDashboardPanel.add(objAbout, BorderLayout.CENTER);
+        this.objMainDashboard.MainDashboardPanel.revalidate();
+        this.objMainDashboard.MainDashboardPanel.repaint();
     }
 
     public void restoreRightEdge() {

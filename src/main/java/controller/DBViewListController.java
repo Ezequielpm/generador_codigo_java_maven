@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.DatabaseModel;
+import utils.Logger;
 import view.DBViewList;
 import view.DatabaseTables;
 import view.MainDashboard;
@@ -76,6 +77,7 @@ public class DBViewListController implements ActionListener {
                 MainDashboard objMainDashBoard = (MainDashboard) this.parentContainer;
                 objMainDashBoard.objMainDashboardController.showDatabaseConnections();
                 objMainDashBoard.repaint();
+                Logger.log("DELETE", "Deleted database '" + this.getObjDatabaseModel().getDatabaseName() + "'");
             }
             return;
         }

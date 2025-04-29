@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.DatabaseModel;
+import utils.Logger;
 import view.MainDashboard;
 import view.PopupDialog;
 
@@ -51,6 +52,7 @@ public class PopupDialogController implements ActionListener {
             //validate the fields
             if (validateFields()) {
                 saveDatabase();
+                Logger.log("CREATE", "Create database '" + this.objPopupDialog.databaseField.getText() + "'");
             }
 
             return;

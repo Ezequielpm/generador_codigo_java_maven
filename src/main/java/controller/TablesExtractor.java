@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import model.Column;
 import model.DatabaseModel;
 import model.Table;
+import utils.Logger;
 /**
  *
  * @author ezequielpena
@@ -57,6 +58,7 @@ public class TablesExtractor {
                 System.out.println(sb.toString());
                 
                 tablesList.add(objTable);
+                Logger.log("INFO", "Generated code for table '" + tableName + "'");
                 //System.out.println(tables.getString("TABLE_NAME"));
             }
 
@@ -64,6 +66,7 @@ public class TablesExtractor {
         } catch (SQLException e) {
             System.err.println("Error al intentar conectar a la base de datos \""+objDatabaseModel.getDatabaseName()+"\"");
             System.err.println("Revise los datos proporcionados");
+             Logger.log("ERROR", "Failed to connect to database '" + objDatabaseModel.getDatabaseName() + "': " + e.getMessage());
             //e.printStackTrace();
         }
         return tablesList;

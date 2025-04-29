@@ -40,7 +40,8 @@ public class MainDashboard extends javax.swing.JFrame {
         connectDBButton = new javax.swing.JButton();
         settingsButton = new javax.swing.JButton();
         dashboardButton = new javax.swing.JButton();
-        settingsButton2 = new javax.swing.JButton();
+        activityButton = new javax.swing.JButton();
+        aboutButton = new javax.swing.JButton();
         MainDashboardPanel = new javax.swing.JPanel();
         RecentConnectionsPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -75,12 +76,13 @@ public class MainDashboard extends javax.swing.JFrame {
             }
         });
 
-        settingsButton.setIcon(new javax.swing.ImageIcon("/Users/ezequielpena/NetBeansProjects/generador_codigo_java_maven/src/resources/icons/Settingsbuttonok.png")); // NOI18N
+        settingsButton.setIcon(new javax.swing.ImageIcon("/Users/ezequielpena/NetBeansProjects/generador_codigo_java_maven/src/resources/icons/SettingsBtn.png")); // NOI18N
         settingsButton.setContentAreaFilled(false);
         settingsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         settingsButton.setMaximumSize(new java.awt.Dimension(180, 50));
         settingsButton.setMinimumSize(new java.awt.Dimension(180, 50));
         settingsButton.setPreferredSize(new java.awt.Dimension(180, 50));
+        settingsButton.setPressedIcon(new javax.swing.ImageIcon("/Users/ezequielpena/NetBeansProjects/generador_codigo_java_maven/src/resources/icons/SettingsBtnPressed.png")); // NOI18N
         settingsButton.setSize(new java.awt.Dimension(150, 50));
         settingsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +96,7 @@ public class MainDashboard extends javax.swing.JFrame {
         dashboardButton.setMaximumSize(new java.awt.Dimension(180, 50));
         dashboardButton.setMinimumSize(new java.awt.Dimension(180, 50));
         dashboardButton.setPreferredSize(new java.awt.Dimension(180, 50));
+        dashboardButton.setPressedIcon(new javax.swing.ImageIcon("/Users/ezequielpena/NetBeansProjects/generador_codigo_java_maven/src/resources/icons/DashboardBtnPressed.png")); // NOI18N
         dashboardButton.setSize(new java.awt.Dimension(150, 50));
         dashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,16 +104,31 @@ public class MainDashboard extends javax.swing.JFrame {
             }
         });
 
-        settingsButton2.setIcon(new javax.swing.ImageIcon("/Users/ezequielpena/NetBeansProjects/generador_codigo_java_maven/src/resources/icons/ActivityBtn.png")); // NOI18N
-        settingsButton2.setContentAreaFilled(false);
-        settingsButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        settingsButton2.setMaximumSize(new java.awt.Dimension(180, 50));
-        settingsButton2.setMinimumSize(new java.awt.Dimension(180, 50));
-        settingsButton2.setPreferredSize(new java.awt.Dimension(180, 50));
-        settingsButton2.setSize(new java.awt.Dimension(150, 50));
-        settingsButton2.addActionListener(new java.awt.event.ActionListener() {
+        activityButton.setIcon(new javax.swing.ImageIcon("/Users/ezequielpena/NetBeansProjects/generador_codigo_java_maven/src/resources/icons/ActivityBtn.png")); // NOI18N
+        activityButton.setContentAreaFilled(false);
+        activityButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        activityButton.setMaximumSize(new java.awt.Dimension(180, 50));
+        activityButton.setMinimumSize(new java.awt.Dimension(180, 50));
+        activityButton.setPreferredSize(new java.awt.Dimension(180, 50));
+        activityButton.setPressedIcon(new javax.swing.ImageIcon("/Users/ezequielpena/NetBeansProjects/generador_codigo_java_maven/src/resources/icons/ActivityBtnPressed.png")); // NOI18N
+        activityButton.setSize(new java.awt.Dimension(150, 50));
+        activityButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                settingsButton2ActionPerformed(evt);
+                activityButtonActionPerformed(evt);
+            }
+        });
+
+        aboutButton.setIcon(new javax.swing.ImageIcon("/Users/ezequielpena/NetBeansProjects/generador_codigo_java_maven/src/resources/icons/AboutBtn.png")); // NOI18N
+        aboutButton.setContentAreaFilled(false);
+        aboutButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        aboutButton.setMaximumSize(new java.awt.Dimension(180, 50));
+        aboutButton.setMinimumSize(new java.awt.Dimension(180, 50));
+        aboutButton.setPreferredSize(new java.awt.Dimension(180, 50));
+        aboutButton.setPressedIcon(new javax.swing.ImageIcon("/Users/ezequielpena/NetBeansProjects/generador_codigo_java_maven/src/resources/icons/AboutBtnPressed.png")); // NOI18N
+        aboutButton.setSize(new java.awt.Dimension(150, 50));
+        aboutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutButtonActionPerformed(evt);
             }
         });
 
@@ -123,8 +141,9 @@ public class MainDashboard extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(LeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(dashboardButton, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                    .addComponent(settingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(settingsButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(activityButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(aboutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(settingsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         LeftPanelLayout.setVerticalGroup(
@@ -137,7 +156,9 @@ public class MainDashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(settingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(settingsButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(activityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(aboutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -163,9 +184,9 @@ public class MainDashboard extends javax.swing.JFrame {
         RecentConnectionsPanelLayout.setVerticalGroup(
             RecentConnectionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RecentConnectionsPanelLayout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         panelContainer.setBorder(null);
@@ -267,9 +288,13 @@ public class MainDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_dashboardButtonActionPerformed
 
-    private void settingsButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButton2ActionPerformed
+    private void activityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activityButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_settingsButton2ActionPerformed
+    }//GEN-LAST:event_activityButtonActionPerformed
+
+    private void aboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aboutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,6 +337,8 @@ public class MainDashboard extends javax.swing.JFrame {
     public javax.swing.JPanel MainDashboardPanel;
     private javax.swing.JPanel MainPanel;
     public javax.swing.JPanel RecentConnectionsPanel;
+    public javax.swing.JButton aboutButton;
+    public javax.swing.JButton activityButton;
     public javax.swing.JButton connectDBButton;
     public javax.swing.JButton dashboardButton;
     private javax.swing.JLabel jLabel1;
@@ -319,6 +346,5 @@ public class MainDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     public javax.swing.JScrollPane panelContainer;
     public javax.swing.JButton settingsButton;
-    public javax.swing.JButton settingsButton2;
     // End of variables declaration//GEN-END:variables
 }
