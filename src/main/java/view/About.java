@@ -29,7 +29,7 @@ public class About extends javax.swing.JPanel {
         textPane.setContentType("text/html");
         textPane.setText("""
             <html>
-                <body style='background-color:#000000; color:#FFFFFF; font-family:poppins; font-size:13px; margin: 30; padding: 0;'>
+                <body style='background-color:#313131; color:#FFFFFF; font-family:poppins; font-size:13px; margin: 30; padding: 0;'>
                     <h2 style='color:#00FF00;'>About CodeGen</h2>
                     <p><b>CodeGen</b> is a tool designed to automate the creation of <b>JPA</b> classes for <b>Spring Boot</b> projects.</p>
                     <p>You only need to register the database you want to connect to, and the program will automatically generate both the <b style='color:#00BFFF;'>Entity</b> class and the <b style='color:#FF4500;'>Repository</b> interface.</p>
