@@ -40,11 +40,13 @@ public class DatabaseTablesController implements ActionListener {
             //objMainDashboard.setVisible(true);
 
             MainDashboard objMainDashboard = (MainDashboard) this.parentContainer;
+            
+            objMainDashboard.objMainDashboardController.restoreRightEdge();
 
-            MainDashboard objMainDashboardViewRestored = new MainDashboard();
-            objMainDashboardViewRestored.setVisible(true);
+            //MainDashboard objMainDashboardViewRestored = new MainDashboard();
+            //objMainDashboardViewRestored.setVisible(true);
 
-            objMainDashboard.dispose();
+            //objMainDashboard.dispose();
 
             /*objMainDashboard.removeAll();
              objMainDashboard.revalidate();
