@@ -24,6 +24,7 @@ import view.DatabaseTables;
 import view.MainDashboard;
 import view.PopupDatabaseForm;
 import view.PopupDialog;
+import view.RightEdgeMain;
 import view.Settings;
 //import view.TablesView;
 
@@ -34,7 +35,6 @@ import view.Settings;
 public class MainDashboardController implements ActionListener {
 
     MainDashboard objMainDashboard;
-    
 
     FileDBOperations objFileDBOperations;
     //DBCodeGeneratorOperations objDBCodeGeneratorOperations;
@@ -50,6 +50,7 @@ public class MainDashboardController implements ActionListener {
         this.objMainDashboard = objMainDashboard;
         this.objMainDashboard.connectDBButton.addActionListener(this);
         this.objMainDashboard.settingsButton.addActionListener(this);
+        this.objMainDashboard.dashboardButton.addActionListener(this);
         this.objMainDashboard.panelContainer.getVerticalScrollBar().setUnitIncrement(10);
         showDatabaseConnections();
 
@@ -69,35 +70,31 @@ public class MainDashboardController implements ActionListener {
             //showDatabaseConnections();
             return;
         }
-        if(e.getSource()==this.objMainDashboard.settingsButton){
+        if (e.getSource() == this.objMainDashboard.settingsButton) {
             this.objMainDashboard.MainDashboardPanel.removeAll();
 
-    Settings objSettings = new Settings();
+            Settings objSettings = new Settings();
 
-    this.objMainDashboard.MainDashboardPanel.setLayout(new BorderLayout()); // ¡Solo si aún no lo habías hecho!
-    this.objMainDashboard.MainDashboardPanel.add(objSettings, BorderLayout.CENTER);
+            this.objMainDashboard.MainDashboardPanel.setLayout(new BorderLayout());
+            this.objMainDashboard.MainDashboardPanel.add(objSettings, BorderLayout.CENTER);
 
-    this.objMainDashboard.MainDashboardPanel.revalidate();
-    this.objMainDashboard.MainDashboardPanel.repaint();
-            
-            
-            
-          /*  this.objMainDashboard.MainDashboardPanel.removeAll();
+            this.objMainDashboard.MainDashboardPanel.revalidate();
+            this.objMainDashboard.MainDashboardPanel.repaint();
+
+            /*  this.objMainDashboard.MainDashboardPanel.removeAll();
             this.objMainDashboard.MainDashboardPanel.revalidate();
             this.objMainDashboard.MainDashboardPanel.repaint();
             Settings objSettings = new Settings();
             this.objMainDashboard.MainDashboardPanel.add(objSettings);
-            */
-          
-           // this.objMainDashboard.revalidate();
-        //this.objMainDashboard.repaint();
-
-            
+             */
+            // this.objMainDashboard.revalidate();
+            //this.objMainDashboard.repaint();
             //this.objMainDashboard.MainDashboardPanel.repaint();
-            
-            
-          // objSettings.setVisible(true);
-             
+            // objSettings.setVisible(true);
+            return;
+        }
+        if(e.getSource()==this.objMainDashboard.dashboardButton){
+            restoreRightEdge();
             return;
         }
     }
@@ -147,45 +144,41 @@ public class MainDashboardController implements ActionListener {
 
             System.out.println("dt: " + database.getDatabaseName());
         }
-        
+
         this.objMainDashboard.revalidate();
         this.objMainDashboard.repaint();
-        
+
         this.objMainDashboard.ConnectionsPanelaux.revalidate();
         this.objMainDashboard.ConnectionsPanelaux.repaint();
-        
+
     }
 
     private void replacePanel() {
-       // this.objMainDashboard.MainDashboardPanel.removeAll();
+        // this.objMainDashboard.MainDashboardPanel.removeAll();
         //TablesView objTablesView = new TablesView();
         CardLayout objCardLayout = new CardLayout();
-       // this.objMainDashboard.MainDashboardPanel.setLayout(objCardLayout);
-       // this.objMainDashboard.MainDashboardPanel.add(objTablesView, "p1");
+        // this.objMainDashboard.MainDashboardPanel.setLayout(objCardLayout);
+        // this.objMainDashboard.MainDashboardPanel.add(objTablesView, "p1");
 
         //objCardLayout.show(this.objMainDashboard.MainDashboardPanel, "p1");
     }
 
     public void changeView(String nameView, DatabaseTables tableView) {
         //this.objMainDashboardAux = this.objMainDashboard;
-        
-        
-        
+
         this.objMainDashboard.MainDashboardPanel.removeAll();
         CardLayout objCardLayout = new CardLayout();
         this.objMainDashboard.MainDashboardPanel.setLayout(objCardLayout);
         this.objMainDashboard.MainDashboardPanel.add(tableView, nameView);
-        
-        
-        
+
         objCardLayout.show(this.objMainDashboard.MainDashboardPanel, nameView);
-        
+
         this.objMainDashboard.revalidate();
         this.objMainDashboard.repaint();
 
     }
-    
-    public void restoreView(){
+
+    public void restoreView() {
         /*this.objMainDashboard.MainDashboardPanel.removeAll();
         CardLayout objCardLayout = new CardLayout();
         this.objMainDashboard.MainDashboardPanel.setLayout(objCardLayout);
@@ -195,6 +188,81 @@ public class MainDashboardController implements ActionListener {
         
         this.objMainDashboard.revalidate();
         this.objMainDashboard.repaint();*/
+    }
+
+    public void restoreRightEdge() {
+        this.objMainDashboard.MainDashboardPanel.removeAll();
+        RightEdgeMain objRightEdgeMain = new RightEdgeMain();
+
+        this.objMainDashboard.MainDashboardPanel.setLayout(new BorderLayout());
+        this.objMainDashboard.MainDashboardPanel.add(objRightEdgeMain, BorderLayout.CENTER);
+        this.objMainDashboard.MainDashboardPanel.revalidate();
+        this.objMainDashboard.MainDashboardPanel.repaint();
+        showDatabaseConnections2();
+    }
+    
+    
+    public void showDatabaseConnections2() {
+        //So far, we store databases in a database, but it's necessary store them in a file in order to make the program portable
+        /*ArrayList<DatabaseModel> listDatabases = objDBCodeGeneratorOperations.read();
+        this.objMainDashboard.ConnectionsPanelaux.setLayout(new BoxLayout(objMainDashboard.ConnectionsPanelaux, BoxLayout.Y_AXIS));
+
+        for (DatabaseModel database : listDatabases) {
+            System.out.println("dt: " + database.getDatabaseName());
+            this.objMainDashboard.ConnectionsPanelaux.add(new DBViewList(database.getDatabaseName()));
+        }
+        this.objMainDashboard.ConnectionsPanelaux.revalidate();
+        this.objMainDashboard.ConnectionsPanelaux.repaint();
+         */
+        //this.objMainDashboard.ConnectionsPanelaux.removeAll();
+        RightEdgeMain objRightEdgeMain = (RightEdgeMain)this.objMainDashboard.MainDashboardPanel.getComponent(0);
+        objRightEdgeMain.ConnectionsPanelaux.removeAll();
+       // this.objMainDashboard.ConnectionsPanelaux.removeAll();
+
+        ArrayList<DatabaseModel> listDatabases = objFileDBOperations.read();
+        if (listDatabases.isEmpty()) {
+            System.out.println("it's empty");
+            /*JLabel message = new JLabel();
+            message.setText("No hay ninguna base de datos");
+
+            this.objMainDashboard.ConnectionsPanelaux.add(message);
+            message.setVisible(true);
+            
+            this.objMainDashboard.repaint();*/
+
+            //return;
+        } else {
+             objRightEdgeMain.ConnectionsPanelaux.removeAll();
+              objRightEdgeMain.ConnectionsPanelaux.repaint();
+            
+
+           // this.objMainDashboard.ConnectionsPanelaux.removeAll();
+           // this.objMainDashboard.ConnectionsPanelaux.repaint();
+
+        }
+         objRightEdgeMain.ConnectionsPanelaux.setLayout(new BoxLayout(objRightEdgeMain.ConnectionsPanelaux,BoxLayout.Y_AXIS));
+
+        //this.objMainDashboard.ConnectionsPanelaux.setLayout(new BoxLayout(objMainDashboard.ConnectionsPanelaux, BoxLayout.Y_AXIS));
+
+        for (DatabaseModel database : listDatabases) {
+            DBViewList objDBViewList = new DBViewList();
+            objDBViewList.objDBViewListController.setObjDatabaseModel(database);
+            objDBViewList.objDBViewListController.putNameView();
+            objDBViewList.objDBViewListController.setParentContainer(objMainDashboard);
+            objRightEdgeMain.ConnectionsPanelaux.add(objDBViewList);
+            //this.objMainDashboard.ConnectionsPanelaux.add(objDBViewList);
+
+            System.out.println("dt: " + database.getDatabaseName());
+        }
+
+        this.objMainDashboard.revalidate();
+        this.objMainDashboard.repaint();
+
+        objRightEdgeMain.ConnectionsPanelaux.revalidate();
+        objRightEdgeMain.ConnectionsPanelaux.repaint();
+        //this.objMainDashboard.ConnectionsPanelaux.revalidate();
+        //this.objMainDashboard.ConnectionsPanelaux.repaint();
+
     }
 
 }
