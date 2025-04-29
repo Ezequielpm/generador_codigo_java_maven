@@ -74,23 +74,17 @@ public class SaveFileCode {
     public void storeCode(){
         JFileChooser fileChooser = new JFileChooser();
         
-        // Configurar para que solo seleccione directorios (carpetas)
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         
-        // Mostrar el diálogo y capturar la respuesta del usuario
         int seleccion = fileChooser.showSaveDialog(null);
         
         if (seleccion == JFileChooser.APPROVE_OPTION) {
-            // Obtener la carpeta seleccionada
             File carpetaSeleccionada = fileChooser.getSelectedFile();
             
-            // Definir el nombre del archivo
             String fileName = this.fileName + ".java"; // Puedes modificar esto o pedirlo al usuario
             
-            // Obtener la ruta de la carpeta
             String path = carpetaSeleccionada.getAbsolutePath() + File.separator + fileName;
             
-            // Llamar a la clase generadora con la ruta obtenida
             ClassGenerator generator = new ClassGenerator();
             generator.setGeneratedCode(generatedCode+"\n"+idClassCode+"\n"+daoCode);
             generator.generateClass(path, fileName);

@@ -51,23 +51,23 @@ public class DatabaseTables extends javax.swing.JPanel {
 
         errorMessage.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         errorMessage.setForeground(new java.awt.Color(255, 51, 0));
-        errorMessage.setText("Ocurrió un error al intentar conectarse a la base de datos");
+        errorMessage.setText("Something went wrong while connecting to the database.");
 
         javax.swing.GroupLayout interPanelLayout = new javax.swing.GroupLayout(interPanel);
         interPanel.setLayout(interPanelLayout);
         interPanelLayout.setHorizontalGroup(
             interPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(interPanelLayout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addComponent(errorMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(568, Short.MAX_VALUE))
+                .addGap(575, 575, 575))
         );
         interPanelLayout.setVerticalGroup(
             interPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(interPanelLayout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addGap(59, 59, 59)
                 .addComponent(errorMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(300, Short.MAX_VALUE))
+                .addGap(272, 272, 272))
         );
 
         scrollPanel.setViewportView(interPanel);
