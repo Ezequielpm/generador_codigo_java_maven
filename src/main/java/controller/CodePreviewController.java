@@ -75,7 +75,8 @@ public class CodePreviewController implements ActionListener{
     
     
     public void saveCode(){
-        SaveFileCode objSaveFileCode = new SaveFileCode(generatedCode, daoCode, generatedIdClassCode);
+        String modifiedCode = this.objCodePreview.codeArea.getText();
+        SaveFileCode objSaveFileCode = new SaveFileCode(modifiedCode, daoCode, generatedIdClassCode);
         objSaveFileCode.setFileName(this.objTable.getNameTable());
         objSaveFileCode.storeCode();
     }
